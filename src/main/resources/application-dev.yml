@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    name: sa
+    password:
+    url: "jdbc:h2:./h2db"
