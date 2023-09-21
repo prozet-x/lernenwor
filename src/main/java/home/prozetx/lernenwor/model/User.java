@@ -1,15 +1,12 @@
 package home.prozetx.lernenwor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Min;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
+@Table(name = "USERS")
 @Getter
 @Setter
 @NoArgsConstructor
