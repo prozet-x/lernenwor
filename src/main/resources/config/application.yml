@@ -1,7 +1,12 @@
 spring:
+  application:
+    name: TaskTracker
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yml
-    enabled: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   jpa:
     hibernate:
       ddl-auto: create-drop
