@@ -1,5 +1,7 @@
 spring:
   datasource:
-    name: sa
-    password:
-    url: "jdbc:h2:./h2db"
+    name: ""
+    password: ""
+    url: "jdbc:h2:./lernenwor"
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yml

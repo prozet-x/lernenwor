@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERSES")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,4 +22,9 @@ public class User {
 
     @NotNull
     private String password;
+
+    public User(String name) {
+        this.name = name;
+        this.password = "";
+    }
 }
