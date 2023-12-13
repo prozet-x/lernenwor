@@ -1,5 +1,6 @@
 package home.prozetx.lernenwor.controller;
 
+import home.prozetx.lernenwor.dto.UserCreation;
 import home.prozetx.lernenwor.dto.UserDto;
 import home.prozetx.lernenwor.model.User;
 import home.prozetx.lernenwor.repository.UserRepository;
@@ -16,12 +17,14 @@ public class UserController {
     @GetMapping
     public String get() {
         User user = new User("name1");
-        userRepository.save(user);
+
 
         return Long.toString(userRepository.count());
     }
     @PostMapping
-    public User createNew(@RequestBody @Valid UserDto userDto) {
+    public User createNew(@RequestBody @Valid UserCreation userCreation) {
+        //userRepository.save(user);
+
         return null;
     }
 }
