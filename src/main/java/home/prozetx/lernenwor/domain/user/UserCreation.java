@@ -1,4 +1,4 @@
-package home.prozetx.lernenwor.dto;
+package home.prozetx.lernenwor.domain.user;
 
 public record UserCreation(
         String name,

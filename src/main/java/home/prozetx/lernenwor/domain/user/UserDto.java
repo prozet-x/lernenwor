@@ -1,4 +1,4 @@
-package home.prozetx.lernenwor.dto;
+package home.prozetx.lernenwor.domain.user;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

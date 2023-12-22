@@ -1,12 +1,10 @@
 package home.prozetx.lernenwor.controller;
 
-import home.prozetx.lernenwor.dto.UserCreation;
-import home.prozetx.lernenwor.dto.UserDto;
-import home.prozetx.lernenwor.model.User;
+import home.prozetx.lernenwor.domain.user.UserCreation;
+import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
