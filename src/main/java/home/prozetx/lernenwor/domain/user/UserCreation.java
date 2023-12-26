@@ -8,7 +8,6 @@ public record UserCreation(
         String name,
         String email,
         String emailConfirm,
-
         @Password
         String password,
         String passwordConfirm
