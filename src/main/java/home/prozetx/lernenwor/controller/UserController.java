@@ -15,6 +15,7 @@ public class UserController {
     @GetMapping
     public String get() {
         User user = new User("name1");
+        userRepository.save(user);
 
 
         return Long.toString(userRepository.count());

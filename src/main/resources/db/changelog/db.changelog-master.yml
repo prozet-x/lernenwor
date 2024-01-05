@@ -29,3 +29,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: userses
 
+databaseChangeLog: []
+
+databaseChangeLog: []
+
