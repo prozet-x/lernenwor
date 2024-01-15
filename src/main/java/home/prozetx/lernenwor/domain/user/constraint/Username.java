@@ -1,6 +1,7 @@
 package home.prozetx.lernenwor.domain.user.constraint;
 
 import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -17,5 +18,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER, ElementType.FIELD})
 public @interface Username {
-
+    String message() default "123";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
 }
