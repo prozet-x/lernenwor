@@ -8,7 +8,7 @@ public record UserCreation(
         String name,
         String email,
         String emailConfirm,
-        //@Password
+        @Password
         String password,
         String passwordConfirm
 ) {
