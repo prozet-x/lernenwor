@@ -12,13 +12,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @NotBlank
-@Size(min = 3, max = 20)
+@Size(min = 3, max = 20, message = "Name length must be between {min} and {max}")
 @Pattern(regexp = "^[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9-_]*$")
 @Constraint(validatedBy = {})
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER, ElementType.FIELD})
 public @interface Username {
-    String message() default "123";
+    String message() default "";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @NotBlank
-@Size(min = 6, max = 20)
+@Size(min = 6, max = 20, message = "Password length must be between {min} and {max}")
 @Pattern(regexp = "^[a-zA-Zа-яА-Я0-9][a-zA-Zа-яА-Я0-9-_]*$")
 @Constraint(validatedBy = {})
 @Retention(RetentionPolicy.RUNTIME)

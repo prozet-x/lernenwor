@@ -5,7 +5,11 @@ import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -21,9 +25,14 @@ public class UserController {
         return Long.toString(userRepository.count());
     }
     @PostMapping
-    public User createNew(@RequestBody @Valid UserCreation userCreation) {
+    public String createNew(@RequestBody @Valid UserCreation userCreation, BindingResult bindingResult) {
         //userRepository.save(user);
+        if (bindingResult.hasErrors()) {
+            return bindingResult.getAllErrors().stream()
+                    .map(ObjectError::getDefaultMessage)
+                    .collect(Collectors.joining("\n"));
+        }
 
-        return null;
+        return "Cool!";
     }
 }
