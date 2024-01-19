@@ -3,6 +3,7 @@ package home.prozetx.lernenwor.controller;
 import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.repository.UserRepository;
+import home.prozetx.lernenwor.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,18 +20,19 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("users")
 public class UserController {
-    private final UserRepository userRepository;
+    private final UserService userService;
     @GetMapping
     public String get() {
         User user = new User("name1");
-        userRepository.save(user);
+        //userRepository.save(user);
 
 
-        return Long.toString(userRepository.count());
+        //return Long.toString(userRepository.count());
+        return "get";
     }
     @PostMapping
     public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
-        //userRepository.save(user);
+        //userRepository.save(userCreation);
         Map<String, Object> result = new HashMap<>();
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = bindingResult.getFieldErrors().stream()
