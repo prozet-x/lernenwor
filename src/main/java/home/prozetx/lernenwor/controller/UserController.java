@@ -4,6 +4,7 @@ import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
+import home.prozetx.lernenwor.service.mapper.UserMapper;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +22,16 @@ import java.util.stream.Collectors;
 @RequestMapping("users")
 public class UserController {
     private final UserService userService;
+    private final UserRepository userRepository;
+
     @GetMapping
     public String get() {
-        User user = new User("name1");
+        //User user = new User("name1");
         //userRepository.save(user);
 
 
-        //return Long.toString(userRepository.count());
-        return "get";
+        return Long.toString(userRepository.count());
+        //return "get";
     }
     @PostMapping
     public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
@@ -41,7 +44,8 @@ public class UserController {
             result.put("errors", errors);
             return ResponseEntity.badRequest().body(result);
         }
-
+        User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
+        userRepository.save(user);
         return ResponseEntity.ok(result);
     }
 }
