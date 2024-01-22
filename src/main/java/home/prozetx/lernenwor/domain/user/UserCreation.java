@@ -5,7 +5,7 @@ import home.prozetx.lernenwor.domain.user.constraint.Username;
 import home.prozetx.lernenwor.service.constraint.FieldsMatchConsiderCase;
 import jakarta.validation.constraints.Email;
 
-@FieldsMatchConsiderCase(firstField = "password", secondField = "passwordConfirm", message = "Fields {firstField} and {secondField} must be equal")
+@FieldsMatchConsiderCase(firstField = "password", secondField = "passwordConfirm", message = "Fields and must be equal")
 public record UserCreation(
         @Username
         String name,

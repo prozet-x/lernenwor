@@ -34,9 +34,10 @@ public class UserController {
         //return "get";
     }
     @PostMapping
-    public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
+    public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation /*, BindingResult bindingResult*/) {
         //userRepository.save(userCreation);
-        Map<String, Object> result = new HashMap<>();
+        System.out.println("456");
+        /*Map<String, Object> result = new HashMap<>();
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = bindingResult.getFieldErrors().stream()
                     .filter(fieldError -> fieldError.getDefaultMessage() != null)
@@ -46,6 +47,7 @@ public class UserController {
         }
         User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
         userRepository.save(user);
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(result);*/
+        return ResponseEntity.ok("Done");
     }
 }

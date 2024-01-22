@@ -3,6 +3,7 @@ package home.prozetx.lernenwor.service.constraint;
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.springframework.beans.PropertyAccessorFactory;
 
 import java.util.Objects;
@@ -16,6 +17,7 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
 
     @Override
     public void initialize(FieldsMatchConsiderCase constraintAnnotation) {
+        System.out.println("789");
         firstField = constraintAnnotation.firstField();
         secondField = constraintAnnotation.secondField();
         message = constraintAnnotation.message();
@@ -38,6 +40,20 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
             constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
                     .addPropertyNode(secondField)
                     .addConstraintViolation();
+
+            /*constraintValidatorContext.unwrap(HibernateConstraintValidatorContext.class)
+                    .addMessageParameter("firstField", firstObj)
+                    .addMessageParameter("secondField", secondObj)
+                    .buildConstraintViolationWithTemplate(message)
+                    .addPropertyNode(firstField)
+                    .addConstraintViolation();
+
+            constraintValidatorContext.unwrap(HibernateConstraintValidatorContext.class)
+                    .addMessageParameter("firstField", firstObj)
+                    .addMessageParameter("secondField", secondObj)
+                    .buildConstraintViolationWithTemplate(message)
+                    .addPropertyNode(secondField)
+                    .addConstraintViolation();*/
         }
         return isValid;
     }
