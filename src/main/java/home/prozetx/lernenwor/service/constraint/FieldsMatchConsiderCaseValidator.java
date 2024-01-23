@@ -17,7 +17,6 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
 
     @Override
     public void initialize(FieldsMatchConsiderCase constraintAnnotation) {
-        System.out.println("789");
         firstField = constraintAnnotation.firstField();
         secondField = constraintAnnotation.secondField();
         message = constraintAnnotation.message();
@@ -30,7 +29,6 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
         final var firstObj = beanWrapper.getPropertyValue(firstField);
         final var secondObj = beanWrapper.getPropertyValue(secondField);
 
-        System.out.println("123");
         boolean isValid = Objects.equals(firstObj, secondObj);
         if (!isValid) {
             constraintValidatorContext.disableDefaultConstraintViolation();
@@ -40,20 +38,6 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
             constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
                     .addPropertyNode(secondField)
                     .addConstraintViolation();
-
-            /*constraintValidatorContext.unwrap(HibernateConstraintValidatorContext.class)
-                    .addMessageParameter("firstField", firstObj)
-                    .addMessageParameter("secondField", secondObj)
-                    .buildConstraintViolationWithTemplate(message)
-                    .addPropertyNode(firstField)
-                    .addConstraintViolation();
-
-            constraintValidatorContext.unwrap(HibernateConstraintValidatorContext.class)
-                    .addMessageParameter("firstField", firstObj)
-                    .addMessageParameter("secondField", secondObj)
-                    .buildConstraintViolationWithTemplate(message)
-                    .addPropertyNode(secondField)
-                    .addConstraintViolation();*/
         }
         return isValid;
     }
