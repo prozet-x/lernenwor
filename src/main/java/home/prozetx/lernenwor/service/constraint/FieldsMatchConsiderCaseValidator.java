@@ -31,13 +31,10 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
 
         boolean isValid = Objects.equals(firstObj, secondObj);
         if (!isValid) {
-//            constraintValidatorContext.disableDefaultConstraintViolation();
-//            constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
-//                    .addPropertyNode(firstField)
-//                    .addConstraintViolation();
-//            constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
-//                    .addPropertyNode(secondField)
-//                    .addConstraintViolation();
+            constraintValidatorContext.disableDefaultConstraintViolation();
+            constraintValidatorContext. buildConstraintViolationWithTemplate(message)
+                    .addPropertyNode(secondField)
+                    .addConstraintViolation();
         }
         return isValid;
     }
