@@ -17,10 +17,10 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
 
     @Override
     public void initialize(FieldsMatchConsiderCase constraintAnnotation) {
+        ConstraintValidator.super.initialize(constraintAnnotation);
         firstField = constraintAnnotation.firstField();
         secondField = constraintAnnotation.secondField();
         message = constraintAnnotation.message();
-        //ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
     @Override
@@ -31,13 +31,13 @@ public class FieldsMatchConsiderCaseValidator implements ConstraintValidator<Fie
 
         boolean isValid = Objects.equals(firstObj, secondObj);
         if (!isValid) {
-            constraintValidatorContext.disableDefaultConstraintViolation();
-            constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
-                    .addPropertyNode(firstField)
-                    .addConstraintViolation();
-            constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
-                    .addPropertyNode(secondField)
-                    .addConstraintViolation();
+//            constraintValidatorContext.disableDefaultConstraintViolation();
+//            constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
+//                    .addPropertyNode(firstField)
+//                    .addConstraintViolation();
+//            constraintValidatorContext.buildConstraintViolationWithTemplate(format(message, firstObj, secondObj))
+//                    .addPropertyNode(secondField)
+//                    .addConstraintViolation();
         }
         return isValid;
     }
