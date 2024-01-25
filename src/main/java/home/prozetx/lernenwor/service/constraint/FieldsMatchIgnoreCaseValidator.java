@@ -1,16 +1,14 @@
 package home.prozetx.lernenwor.service.constraint;
 
-import java.util.Objects;
-
-public class FieldsMatchConsiderCaseValidator extends FieldsMatchValidator<FieldsMatchConsiderCase> {
+public class FieldsMatchIgnoreCaseValidator extends FieldsMatchValidator<FieldsMatchIgnoreCase> {
     @Override
-    public void initialize(FieldsMatchConsiderCase constraintAnnotation) {
+    public void initialize(FieldsMatchIgnoreCase constraintAnnotation) {
         firstFieldName = constraintAnnotation.firstField();
         secondFieldName = constraintAnnotation.secondField();
         message = constraintAnnotation.message();
     }
     @Override
     protected boolean fieldsEqual(Object obj1, Object obj2) {
-        return Objects.equals(obj1.toString(), obj2.toString());
+        return obj1.toString().equalsIgnoreCase(obj2.toString());
     }
 }

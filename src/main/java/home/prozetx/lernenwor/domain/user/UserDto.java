@@ -11,9 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDto {
-    @NotBlank
     private String name;
-
-    @NotBlank
+    private String email;
     private String password;
 }

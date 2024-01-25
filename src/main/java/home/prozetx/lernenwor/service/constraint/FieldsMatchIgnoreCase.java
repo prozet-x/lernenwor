@@ -6,15 +6,14 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = FieldsMatchConsiderCaseValidator.class)
-@Target(ElementType.TYPE)
+@Constraint(validatedBy = FieldsMatchIgnoreCaseValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface FieldsMatchConsiderCase {
+@Target(ElementType.TYPE)
+public @interface FieldsMatchIgnoreCase {
     String firstField();
-
     String secondField();
 
-    String message() default "Fields are not equal considering case";
+    String message() default "Fields are not equal ignoring case";
     Class[] groups() default {};
     Class[] payload() default {};
 }
