@@ -40,7 +40,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = bindingResult.getFieldErrors().stream()
                     .filter(fieldError -> fieldError.getDefaultMessage() != null)
-                    .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+                    .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage, (existingValue, newValue) -> existingValue));
             result.put("errors", errors);
             return ResponseEntity.badRequest().body(result);
         }
