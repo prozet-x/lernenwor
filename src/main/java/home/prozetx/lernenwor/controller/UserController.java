@@ -35,7 +35,6 @@ public class UserController {
     }
     @PostMapping
     public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
-        //userRepository.save(userCreation);
         Map<String, Object> result = new HashMap<>();
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = bindingResult.getFieldErrors().stream()
@@ -47,6 +46,5 @@ public class UserController {
         User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
         userRepository.save(user);
         return ResponseEntity.ok(result);
-        //return ResponseEntity.ok("Done");
     }
 }
