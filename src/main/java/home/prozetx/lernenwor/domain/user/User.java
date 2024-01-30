@@ -1,6 +1,7 @@
 package home.prozetx.lernenwor.domain.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -21,6 +22,11 @@ public class User {
     @Size(min = 3, max = 20)
     @Column(unique = true)
     private String name;
+
+    @NotNull
+    @Email
+    @Column(unique = true)
+    private String email;
 
     @NotNull
     private String password;
