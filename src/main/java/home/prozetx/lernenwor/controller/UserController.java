@@ -43,8 +43,7 @@ public class UserController {
             result.put("errors", errors);
             return ResponseEntity.badRequest().body(result);
         }
-        User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
-        userRepository.save(user);
+        userService.saveUser(userCreation);
         return ResponseEntity.ok(result);
     }
 }
