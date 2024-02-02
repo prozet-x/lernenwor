@@ -2,9 +2,12 @@ package home.prozetx.lernenwor.service;
 
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.user.UserCreation;
+import home.prozetx.lernenwor.exception.exceptions.UserEmailExists;
+import home.prozetx.lernenwor.exception.exceptions.UserNameExists;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -14,37 +17,23 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
     public Optional<User> saveUser(UserCreation userCreation) {
-//        if (userRepository.existsByName(userCreation.name()) || userRepository.existsByName(userCreation.name())) {
-//            System.out.println("Ffffffuuuuuucccckkkk!");
-//            return Optional.empty();
-//        }
-//        User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
-//        return Optional.of(userRepository.save(user));
-
-        try {
-            return Optional.of(userRepository.save(UserMapper.INSTANCE.userCreationToUser(userCreation)));
-        } catch (DataIntegrityViolationException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("FFFFFUUUUUCCCCCKKKKK22222222222222222222222!!!!!!");
-            return Optional.empty();
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("FFFFFUUUUUCCCCCKKKKK3333333333333333!!!!!!");
-            return Optional.empty();
+        if (userRepository.existsByName(userCreation.name())) {
+            log.info("Attempt to create a user with an existing name: " + userCreation);
+            throw new UserNameExists(userCreation.name());
         }
-        catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("FFFFFUUUUUCCCCCKKKKK!!!!!!");
-            return Optional.empty();
+        if (userRepository.existsByEmail(userCreation.email())) {
+            log.info("Attempt to create a user with an existing email" + userCreation);
+            throw new UserEmailExists(userCreation.email());
         }
-        //return Optional.empty();
-
-
-
+        User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
+        userRepository.save(user);
+        log.info("The new user " + user + " has been successfully saved");
+        return Optional.of(user);
     }
 }

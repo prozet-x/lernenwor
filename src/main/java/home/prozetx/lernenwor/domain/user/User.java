@@ -8,7 +8,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
-@Table(name = "USERSES")
+@Table(name = "USERS")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,5 +34,15 @@ public class User {
     public User(String name) {
         this.name = name;
         this.password = "";
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
