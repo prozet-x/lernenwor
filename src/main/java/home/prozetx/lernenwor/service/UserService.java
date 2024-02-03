@@ -8,8 +8,6 @@ import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +26,7 @@ public class UserService {
             throw new UserNameExists(userCreation.name());
         }
         if (userRepository.existsByEmail(userCreation.email())) {
-            log.info("Attempt to create a user with an existing email" + userCreation);
+            log.info("Attempt to create a user with an existing email: " + userCreation);
             throw new UserEmailExists(userCreation.email());
         }
         User user = UserMapper.INSTANCE.userCreationToUser(userCreation);

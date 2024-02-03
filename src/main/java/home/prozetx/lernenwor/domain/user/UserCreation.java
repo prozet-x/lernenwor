@@ -15,4 +15,10 @@ public record UserCreation(
         String password,
         String passwordConfirm
 ) {
+        public String toSafeString() {
+                return "UserCreation {" +
+                        "name=" + name +
+                        ", email=" + email +
+                        "}";
+        }
 }
