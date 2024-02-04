@@ -27,12 +27,14 @@ public class UserController {
     private final UserRepository userRepository;
 
     @GetMapping
-    public String get() {
+    public ResponseEntity<?> get() {
         //User user = new User("name1");
         //userRepository.save(user);
 
-
-        return Long.toString(userRepository.count());
+        var passwords = userRepository.findAll().stream()
+                .map(User::getPassword)
+                .toList();
+        return ResponseEntity.ok(passwords);
         //return "get";
     }
     @PostMapping
