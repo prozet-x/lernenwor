@@ -40,6 +40,6 @@ public class UserService {
 
         var userConfirmToken = new UserConfirmToken(user);
         userConfirmTokenRepository.save(userConfirmToken);
-        log.info("The new user confirm token " + userConfirmToken.toString() + " has been successfully saved");
+        log.info("The new user confirm token has been successfully saved. Token " + userConfirmToken);
     }
 }

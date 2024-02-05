@@ -385,3 +385,768 @@ home.prozetx.lernenwor.exception.exceptions.UserEmailExists: User with email ema
 2024-02-05 21:18:57 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-02-05 21:18:57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-02-05 21:18:57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 22:41:49 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 22:41:49 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 10688 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 22:41:49 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 22:41:50 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 22:41:50 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 2 JPA repository interfaces.
+2024-02-05 22:41:50 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 22:41:50 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 22:41:50 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 22:41:50 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 22:41:50 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 22:41:50 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 958 ms
+2024-02-05 22:41:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 22:41:51 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:dc36c57c-91f2-411f-b65c-2c3a49d3e402 user=SA
+2024-02-05 22:41:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 22:41:51 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 22:41:51 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 22:41:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 22:41:51 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 22:41:51 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 22:41:51 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 22:41:51 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 22:41:52 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 22:41:52 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 22:41:52 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 22:41:52 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 22:41:52 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1bcca516, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@cef23a8, org.springframework.security.web.context.SecurityContextHolderFilter@2f408960, org.springframework.security.web.header.HeaderWriterFilter@580c4c0b, org.springframework.security.web.authentication.logout.LogoutFilter@2f2a5064, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@306c8e09, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5390862e, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@762d2e4c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7212b28e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34766f4b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@439b0198, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e4bf55b, org.springframework.security.web.access.ExceptionTranslationFilter@195888a6, org.springframework.security.web.access.intercept.AuthorizationFilter@1c000c2f]
+2024-02-05 22:41:52 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 22:41:52 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 22:41:52 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.501 seconds (process running for 3.746)
+2024-02-05 22:42:09 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 22:42:09 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 22:42:09 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 22:42:09 [http-nio-8080-exec-3] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 22:42:09 [http-nio-8080-exec-3] INFO  h.p.lernenwor.service.UserService - The new user home.prozetx.lernenwor.domain.user.User@564894a1 has been successfully saved
+2024-02-05 22:42:09 [http-nio-8080-exec-3] INFO  h.p.lernenwor.service.UserService - The new user confirm token UserConfirmToken(id=1, token=00bd15cd-d937-4a4c-ba1b-1fd20e3d8298, user=home.prozetx.lernenwor.domain.user.User@564894a1) has been successfully saved
+2024-02-05 22:44:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 22:44:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 22:44:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 22:44:23 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 22:44:23 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 10903 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 22:44:23 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 22:44:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 22:44:24 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 2 JPA repository interfaces.
+2024-02-05 22:44:24 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 22:44:24 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 22:44:24 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 22:44:24 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 22:44:24 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 22:44:24 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 921 ms
+2024-02-05 22:44:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 22:44:24 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:c9d55715-799a-4efc-912c-91bc93f25cb0 user=SA
+2024-02-05 22:44:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 22:44:24 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 22:44:24 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 22:44:24 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 22:44:24 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 22:44:24 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 22:44:25 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 22:44:25 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 22:44:25 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 22:44:25 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 22:44:25 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 22:44:25 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 22:44:26 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f6936cc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56bf6f1e, org.springframework.security.web.context.SecurityContextHolderFilter@3a2881d6, org.springframework.security.web.header.HeaderWriterFilter@3e7da4cb, org.springframework.security.web.authentication.logout.LogoutFilter@6c38f4de, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6e6bd43b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5bc44d78, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4ac26092, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@18d63996, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@32da6cef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3cdc5155, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@308e465b, org.springframework.security.web.access.ExceptionTranslationFilter@1dfd6023, org.springframework.security.web.access.intercept.AuthorizationFilter@21f9a305]
+2024-02-05 22:44:26 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 22:44:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 22:44:26 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.225 seconds (process running for 3.424)
+2024-02-05 22:44:27 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 22:44:27 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 22:44:27 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 22:44:27 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 22:44:28 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com, emailConfirmed=false) has been successfully saved
+2024-02-05 22:44:28 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token 
+2024-02-05 22:46:07 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 22:46:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 22:46:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 22:46:09 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 22:46:09 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 11059 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 22:46:10 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 22:46:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 22:46:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 2 JPA repository interfaces.
+2024-02-05 22:46:10 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 22:46:10 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 22:46:10 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 22:46:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 22:46:11 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 22:46:11 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 981 ms
+2024-02-05 22:46:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 22:46:11 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:e4947c9f-9255-4381-b2c5-b4ff5904871c user=SA
+2024-02-05 22:46:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 22:46:11 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 22:46:11 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 22:46:11 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 22:46:11 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 22:46:11 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 22:46:11 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 22:46:11 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 22:46:12 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 22:46:12 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 22:46:12 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 22:46:12 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 22:46:12 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@87df88d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f3b11e6, org.springframework.security.web.context.SecurityContextHolderFilter@2ced7cf, org.springframework.security.web.header.HeaderWriterFilter@5d00e30e, org.springframework.security.web.authentication.logout.LogoutFilter@193792e6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@308e465b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@c2dab10, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@28da5c4d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4ac26092, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@604e8a6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@34766f4b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c928399, org.springframework.security.web.access.ExceptionTranslationFilter@4b9dd787, org.springframework.security.web.access.intercept.AuthorizationFilter@18d63996]
+2024-02-05 22:46:12 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 22:46:12 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 22:46:12 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.263 seconds (process running for 3.516)
+2024-02-05 22:46:15 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 22:46:15 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 22:46:15 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 22:46:15 [http-nio-8080-exec-3] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 22:46:15 [http-nio-8080-exec-3] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 22:46:15 [http-nio-8080-exec-3] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 22:54:59 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 22:54:59 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 22:54:59 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:16:22 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:16:22 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 12158 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:16:22 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:16:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:16:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:16:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:16:23 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:16:23 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:16:23 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:16:23 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:16:23 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1021 ms
+2024-02-05 23:16:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:16:23 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:efc4158b-4e78-475d-8e4d-ee376663c75c user=SA
+2024-02-05 23:16:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:16:23 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:16:23 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:16:23 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:16:23 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:16:23 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:16:23 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:16:24 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:16:24 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:16:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:16:24 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:16:24 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:16:24 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@23b3afb4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2162598, org.springframework.security.web.context.SecurityContextHolderFilter@6c4e11d0, org.springframework.security.web.header.HeaderWriterFilter@44103266, org.springframework.security.web.authentication.logout.LogoutFilter@35b38986, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1e4bf55b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@923bf67, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3cf1b5fb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@762d2e4c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3284de45, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36a25457, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4598961d, org.springframework.security.web.access.ExceptionTranslationFilter@4d204b30, org.springframework.security.web.access.intercept.AuthorizationFilter@7212b28e]
+2024-02-05 23:16:25 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:16:25 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:16:25 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.274 seconds (process running for 3.502)
+2024-02-05 23:16:32 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:16:32 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:16:32 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:16:32 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:16:32 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:16:32 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:17:57 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:17:57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:17:57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:18:06 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:18:06 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 12395 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:18:06 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:18:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:18:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:18:07 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:18:07 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:18:07 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:18:07 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:18:07 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:18:07 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1041 ms
+2024-02-05 23:18:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:18:07 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:effa5abc-97b8-45f7-bb33-6b8c79778ce3 user=SA
+2024-02-05 23:18:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:18:07 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:18:07 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:18:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:18:07 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:18:08 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:18:08 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:18:08 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:18:08 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:18:08 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:18:09 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:18:09 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:18:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@673fdc28, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4cf1ec2, org.springframework.security.web.context.SecurityContextHolderFilter@220d7eb7, org.springframework.security.web.header.HeaderWriterFilter@489c15e2, org.springframework.security.web.authentication.logout.LogoutFilter@28da5c4d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@410e043b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1fa77770, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@16eb01d4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@78a7fccd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1eda12b3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ff87203, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4246f904, org.springframework.security.web.access.ExceptionTranslationFilter@48590849, org.springframework.security.web.access.intercept.AuthorizationFilter@4bb644dc]
+2024-02-05 23:18:09 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:18:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:18:09 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.633 seconds (process running for 3.962)
+2024-02-05 23:18:13 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:18:13 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:18:13 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:18:13 [http-nio-8080-exec-2] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:18:13 [http-nio-8080-exec-2] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:19:01 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=53s742ms105µs780ns).
+2024-02-05 23:19:46 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45s238ms176µs609ns).
+2024-02-05 23:19:46 [http-nio-8080-exec-2] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:19:57 [http-nio-8080-exec-3] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:20:34 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=47s756ms1µs98ns).
+2024-02-05 23:20:34 [http-nio-8080-exec-3] INFO  h.p.lernenwor.service.UserService - Attempt to create a user with an existing name: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:22:25 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:22:25 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 12623 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:22:25 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:22:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:22:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:22:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:22:26 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:22:26 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:22:26 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:22:26 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:22:26 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 901 ms
+2024-02-05 23:22:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:22:26 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:d9003f43-c7c6-4ccd-9f1c-1e30f11e4544 user=SA
+2024-02-05 23:22:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:22:26 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:22:27 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:22:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:22:27 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:22:27 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:22:27 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:22:27 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:22:27 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:22:27 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:22:28 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:22:28 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:22:28 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@27c49f54, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69efdfd9, org.springframework.security.web.context.SecurityContextHolderFilter@21f9a305, org.springframework.security.web.header.HeaderWriterFilter@1eda12b3, org.springframework.security.web.authentication.logout.LogoutFilter@1e4bf55b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@673fdc28, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@35b38986, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1c149539, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7f65639e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@aaf4375, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1fa77770, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a5c6b30, org.springframework.security.web.access.ExceptionTranslationFilter@220d7eb7, org.springframework.security.web.access.intercept.AuthorizationFilter@7be85f15]
+2024-02-05 23:22:28 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:22:28 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:22:28 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.039 seconds (process running for 3.268)
+2024-02-05 23:22:33 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:22:33 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:22:33 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:22:33 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:22:33 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:22:33 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:22:50 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:22:50 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:22:50 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:22:52 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:22:52 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 12765 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:22:52 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:22:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:22:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:22:53 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:22:53 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:22:53 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:22:53 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:22:53 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:22:53 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1025 ms
+2024-02-05 23:22:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:22:53 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:c0768687-b007-4953-8df1-a6c01ab8945a user=SA
+2024-02-05 23:22:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:22:53 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:22:54 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:22:54 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:22:54 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:22:54 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:22:54 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:22:54 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:22:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:22:54 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:22:55 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:22:55 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:22:55 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f3b11e6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@28da5c4d, org.springframework.security.web.context.SecurityContextHolderFilter@580c4c0b, org.springframework.security.web.header.HeaderWriterFilter@3cdc5155, org.springframework.security.web.authentication.logout.LogoutFilter@21f9a305, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6e7d9d0, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6c4e11d0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7c928399, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@308e465b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5bc44d78, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d204b30, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1bcca516, org.springframework.security.web.access.ExceptionTranslationFilter@3545c913, org.springframework.security.web.access.intercept.AuthorizationFilter@6e6bd43b]
+2024-02-05 23:22:55 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:22:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:22:55 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.354 seconds (process running for 3.686)
+2024-02-05 23:22:55 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:22:55 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:22:55 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:23:02 [http-nio-8080-exec-5] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:23:02 [http-nio-8080-exec-5] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:23:02 [http-nio-8080-exec-5] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:23:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:23:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:23:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:24:18 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:24:18 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 13007 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:24:18 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:24:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:24:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:24:19 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:24:19 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:24:19 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:24:19 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:24:19 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:24:19 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 990 ms
+2024-02-05 23:24:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:24:20 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:f73e9db8-115a-483c-b51f-50207478ca1e user=SA
+2024-02-05 23:24:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:24:20 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:24:20 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:24:20 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:24:20 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:24:20 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:24:20 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:24:20 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:24:21 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:24:21 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:24:21 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:24:21 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:24:21 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@15d68a50, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a1689e8, org.springframework.security.web.context.SecurityContextHolderFilter@44103266, org.springframework.security.web.header.HeaderWriterFilter@34766f4b, org.springframework.security.web.authentication.logout.LogoutFilter@18d63996, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1bcca516, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@48590849, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4bb644dc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7c928399, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c2dab10, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5390862e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@23b3afb4, org.springframework.security.web.access.ExceptionTranslationFilter@2f408960, org.springframework.security.web.access.intercept.AuthorizationFilter@308e465b]
+2024-02-05 23:24:21 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:24:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:24:21 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.49 seconds (process running for 3.761)
+2024-02-05 23:24:26 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:24:26 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:24:26 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-02-05 23:24:26 [http-nio-8080-exec-2] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:24:26 [http-nio-8080-exec-2] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:24:26 [http-nio-8080-exec-2] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:25:31 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s964ms46µs234ns).
+2024-02-05 23:27:09 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m38s767ms419µs336ns).
+2024-02-05 23:40:13 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:40:13 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 13702 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:40:13 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:40:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:40:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:40:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:40:14 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:40:14 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:40:14 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:40:14 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:40:14 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 907 ms
+2024-02-05 23:40:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:40:14 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:e93ecacf-c87f-4c63-a9a9-bb3eb3b4e82b user=SA
+2024-02-05 23:40:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:40:15 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:40:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:40:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:40:15 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:40:15 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:40:15 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:40:15 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:40:15 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:40:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:40:16 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:40:16 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:40:16 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f6936cc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56bf6f1e, org.springframework.security.web.context.SecurityContextHolderFilter@3a2881d6, org.springframework.security.web.header.HeaderWriterFilter@3e7da4cb, org.springframework.security.web.authentication.logout.LogoutFilter@6c38f4de, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6e6bd43b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5bc44d78, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4ac26092, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@18d63996, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@32da6cef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3cdc5155, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@308e465b, org.springframework.security.web.access.ExceptionTranslationFilter@1dfd6023, org.springframework.security.web.access.intercept.AuthorizationFilter@21f9a305]
+2024-02-05 23:40:16 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:40:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:40:16 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.282 seconds (process running for 3.609)
+2024-02-05 23:40:21 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:40:21 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:40:21 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:40:21 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:40:21 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:40:21 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, token=f4bd49aa-2b9f-4c3f-9d52-787137534c8a, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:43:26 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:43:26 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:43:26 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:43:29 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:43:29 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 13892 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:43:29 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:43:29 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:43:29 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:43:29 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:43:29 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:43:29 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:43:29 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:43:29 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:43:29 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 929 ms
+2024-02-05 23:43:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:43:30 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:1f74755e-271e-4403-bf13-cbb7a949d100 user=SA
+2024-02-05 23:43:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:43:30 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:43:30 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:43:30 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:43:30 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:43:30 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:43:30 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:43:30 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:43:31 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:43:31 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:43:31 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:43:31 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:43:31 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2662e3ff, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@487ee2a, org.springframework.security.web.context.SecurityContextHolderFilter@35b38986, org.springframework.security.web.header.HeaderWriterFilter@18d63996, org.springframework.security.web.authentication.logout.LogoutFilter@790ea58f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6662974a, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@87df88d, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@682482ee, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5ee76cf2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c7ac998, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@308e465b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@261b27db, org.springframework.security.web.access.ExceptionTranslationFilter@1fa77770, org.springframework.security.web.access.intercept.AuthorizationFilter@16eb01d4]
+2024-02-05 23:43:31 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:43:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:43:31 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.039 seconds (process running for 3.265)
+2024-02-05 23:43:48 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:43:48 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:43:48 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-02-05 23:43:48 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:43:48 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:43:48 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, token=f9a534d6-93f4-4130-bb5b-267f17c935dc, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:44:11 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:44:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:44:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:44:14 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:44:14 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 14038 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:44:14 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:44:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:44:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:44:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:44:14 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:44:14 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:44:14 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:44:15 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:44:15 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 860 ms
+2024-02-05 23:44:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:44:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:1164077c-4b4c-4a9e-be33-a5d3b0466362 user=SA
+2024-02-05 23:44:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:44:15 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:44:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:44:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:44:15 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:44:15 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:44:15 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:44:15 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:44:16 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:44:16 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:44:16 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:44:16 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:44:16 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@26b150cd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@62ff3028, org.springframework.security.web.context.SecurityContextHolderFilter@1e4bf55b, org.springframework.security.web.header.HeaderWriterFilter@1bcca516, org.springframework.security.web.authentication.logout.LogoutFilter@6662974a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48f95f96, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@790ea58f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@45e68fac, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@32029cd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@15d68a50, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2162598, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5fb0a09e, org.springframework.security.web.access.ExceptionTranslationFilter@28da5c4d, org.springframework.security.web.access.intercept.AuthorizationFilter@175745fc]
+2024-02-05 23:44:16 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:44:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:44:16 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 2.984 seconds (process running for 3.172)
+2024-02-05 23:44:25 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:44:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:44:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-02-05 23:44:25 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:44:25 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:44:25 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:45:37 [http-nio-8080-exec-5] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [No adapter for handler [home.prozetx.lernenwor.controller.EmailConfirm@1d4531fa]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler] with root cause
+jakarta.servlet.ServletException: No adapter for handler [home.prozetx.lernenwor.controller.EmailConfirm@1d4531fa]: The DispatcherServlet configuration needs to include a HandlerAdapter that supports this handler
+	at org.springframework.web.servlet.DispatcherServlet.getHandlerAdapter(DispatcherServlet.java:1316)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1064)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:168)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:58)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:188)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:174)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2024-02-05 23:47:11 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:47:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:47:11 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:47:17 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:47:17 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 14212 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:47:17 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:47:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:47:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:47:18 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:47:18 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:47:18 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:47:18 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:47:18 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:47:18 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 935 ms
+2024-02-05 23:47:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:47:18 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:08fcc0f8-d847-443b-b256-dfb3de33786a user=SA
+2024-02-05 23:47:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:47:18 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:47:18 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:47:18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:47:18 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:47:19 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:47:19 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:47:19 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:47:19 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:47:19 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:47:19 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:47:19 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:47:20 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@27c49f54, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69efdfd9, org.springframework.security.web.context.SecurityContextHolderFilter@21f9a305, org.springframework.security.web.header.HeaderWriterFilter@1eda12b3, org.springframework.security.web.authentication.logout.LogoutFilter@1e4bf55b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@673fdc28, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@35b38986, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1c149539, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7f65639e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@aaf4375, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1fa77770, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a5c6b30, org.springframework.security.web.access.ExceptionTranslationFilter@220d7eb7, org.springframework.security.web.access.intercept.AuthorizationFilter@7be85f15]
+2024-02-05 23:47:20 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:47:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:47:20 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.056 seconds (process running for 3.274)
+2024-02-05 23:47:49 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:47:49 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:47:49 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:47:49 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:47:49 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:47:49 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:48:28 [http-nio-8080-exec-4] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingPathVariableException: Required URI template variable 'token' for method parameter type String is not present]
+2024-02-05 23:49:39 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:49:39 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:49:39 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:49:42 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:49:42 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 14378 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:49:42 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:49:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:49:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:49:42 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:49:42 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:49:42 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:49:42 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:49:43 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:49:43 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 901 ms
+2024-02-05 23:49:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:49:43 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:1a69d6e3-850e-4d2a-93e9-9634e68f7dcf user=SA
+2024-02-05 23:49:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:49:43 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:49:43 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:49:43 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:49:43 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:49:43 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:49:43 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:49:43 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:49:44 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:49:44 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:49:44 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:49:44 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:49:44 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@732bb49d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@684eb4a0, org.springframework.security.web.context.SecurityContextHolderFilter@4bb644dc, org.springframework.security.web.header.HeaderWriterFilter@60510791, org.springframework.security.web.authentication.logout.LogoutFilter@1aba8978, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@24d7c365, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@9fd5dd0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@19a4cdea, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@26d02dc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2162598, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48619f15, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@434a2a10, org.springframework.security.web.access.ExceptionTranslationFilter@762d2e4c, org.springframework.security.web.access.intercept.AuthorizationFilter@32eac39b]
+2024-02-05 23:49:44 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:49:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:49:44 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 2.979 seconds (process running for 3.171)
+2024-02-05 23:49:54 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:49:54 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:49:54 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-02-05 23:49:54 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:49:54 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:49:54 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:50:18 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "home.prozetx.lernenwor.repository.UserConfirmTokenRepository.findByToken(String)" because "home.prozetx.lernenwor.controller.EmailConfirm.userConfirmTokenRepository" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "home.prozetx.lernenwor.repository.UserConfirmTokenRepository.findByToken(String)" because "home.prozetx.lernenwor.controller.EmailConfirm.userConfirmTokenRepository" is null
+	at home.prozetx.lernenwor.controller.EmailConfirm.confirmEmail(EmailConfirm.java:16)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:168)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:58)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:188)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:174)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+2024-02-05 23:51:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:51:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:51:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:51:45 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:51:45 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 14537 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:51:45 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:51:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:51:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:51:46 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:51:46 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:51:46 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:51:46 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:51:46 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:51:46 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 994 ms
+2024-02-05 23:51:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:51:46 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:7c945951-b4a9-4125-b6b1-ed286994f755 user=SA
+2024-02-05 23:51:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:51:46 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:51:46 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:51:46 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:51:46 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:51:46 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:51:46 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:51:47 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:51:47 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:51:47 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:51:47 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:51:47 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:51:47 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@732bb49d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@684eb4a0, org.springframework.security.web.context.SecurityContextHolderFilter@4bb644dc, org.springframework.security.web.header.HeaderWriterFilter@60510791, org.springframework.security.web.authentication.logout.LogoutFilter@1aba8978, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@24d7c365, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@9fd5dd0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@19a4cdea, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@26d02dc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2162598, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48619f15, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@434a2a10, org.springframework.security.web.access.ExceptionTranslationFilter@762d2e4c, org.springframework.security.web.access.intercept.AuthorizationFilter@32eac39b]
+2024-02-05 23:51:48 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:51:48 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:51:48 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.165 seconds (process running for 3.36)
+2024-02-05 23:53:12 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:53:12 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:53:12 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-02-05 23:53:12 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:53:12 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:53:12 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))
+2024-02-05 23:54:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:54:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-02-05 23:54:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-02-05 23:54:08 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-05 23:54:08 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 19.0.2 with PID 14755 (/home/dima/Projects/lernenwor/build/classes/java/main started by dima in /home/dima/Projects/lernenwor)
+2024-02-05 23:54:08 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-05 23:54:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-05 23:54:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 2 JPA repository interfaces.
+2024-02-05 23:54:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-05 23:54:09 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:54:09 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-05 23:54:09 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-05 23:54:09 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-05 23:54:09 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 884 ms
+2024-02-05 23:54:09 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-05 23:54:09 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:7e015f14-4c22-48b7-9da3-474b8b9ba4f0 user=SA
+2024-02-05 23:54:09 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-05 23:54:09 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2024-02-05 23:54:09 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-05 23:54:09 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-05 23:54:09 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-05 23:54:09 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:54:09 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-05 23:54:09 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-05 23:54:10 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-05 23:54:10 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-05 23:54:10 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-05 23:54:10 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-02-05 23:54:10 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@261b27db, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@175745fc, org.springframework.security.web.context.SecurityContextHolderFilter@7f6936cc, org.springframework.security.web.header.HeaderWriterFilter@35b38986, org.springframework.security.web.authentication.logout.LogoutFilter@5d3a238, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@68908be7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7c928399, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2c1a0f82, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@df5f657, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ac26092, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7212b28e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@60e5db1d, org.springframework.security.web.access.ExceptionTranslationFilter@6e6bd43b, org.springframework.security.web.access.intercept.AuthorizationFilter@27c49f54]
+2024-02-05 23:54:11 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-05 23:54:11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-05 23:54:11 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 3.063 seconds (process running for 3.376)
+2024-02-05 23:54:16 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-05 23:54:16 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-05 23:54:16 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-02-05 23:54:16 [http-nio-8080-exec-1] INFO  h.p.l.controller.UserController - Attempt to register a new user: UserCreation[name=name, email=email@mail.com, password=pass1234, passwordConfirm=pass1234]
+2024-02-05 23:54:17 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user User(id=1, name=name, email=email@mail.com) has been successfully saved
+2024-02-05 23:54:17 [http-nio-8080-exec-1] INFO  h.p.lernenwor.service.UserService - The new user confirm token has been successfully saved. Token UserConfirmToken(id=1, user=User(id=1, name=name, email=email@mail.com))

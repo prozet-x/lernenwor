@@ -13,6 +13,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,17 +29,10 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @ToString.Exclude
     private boolean emailConfirmed = false;
 
     @NotNull
     @ToString.Exclude
     private String password;
-
-//    public String toSafeString() {
-//        return "User {" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", email='" + email + '\'' +
-//                '}';
-//    }
 }

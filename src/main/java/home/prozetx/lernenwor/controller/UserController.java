@@ -2,6 +2,7 @@ package home.prozetx.lernenwor.controller;
 
 import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.repository.UserConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import jakarta.validation.Valid;
@@ -22,11 +23,16 @@ import java.util.stream.Collectors;
 public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
+    private final UserConfirmTokenRepository userConfirmTokenRepository;
 
     @GetMapping
     public ResponseEntity<?> get() {
-        var users = userRepository.findAll();
-        return ResponseEntity.ok(users);
+        var result = new HashMap<String, Object>();
+        result.put("users", userRepository.findAll());
+//        var users = userRepository.findAll();
+        result.put("tokens", userConfirmTokenRepository.findAll());
+
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping

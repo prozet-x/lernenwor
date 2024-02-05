@@ -2,9 +2,7 @@ package home.prozetx.lernenwor.domain.userConfirmToken;
 
 import home.prozetx.lernenwor.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -12,11 +10,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Getter
+@Setter
 public class UserConfirmToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ToString.Exclude
     private String token;
 
     @ManyToOne
