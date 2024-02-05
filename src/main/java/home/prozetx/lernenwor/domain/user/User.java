@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
+
 
 @Entity
 @Table(name = "USERS")
@@ -28,21 +28,17 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    private boolean emailConfirmed = false;
+
     @NotNull
+    @ToString.Exclude
     private String password;
 
-    public User(String name) {
-        this.name = name;
-        this.password = "";
-    }
-
-    @Override
-    public String toString() {
-        return "User {" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+//    public String toSafeString() {
+//        return "User {" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", email='" + email + '\'' +
+//                '}';
+//    }
 }

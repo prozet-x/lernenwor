@@ -1,6 +1,6 @@
 spring:
   application:
-    name: TaskTracker
+    name: lernenwor
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yml
   mvc:
