@@ -2,10 +2,10 @@ package home.prozetx.lernenwor.service;
 
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.user.UserCreation;
-import home.prozetx.lernenwor.domain.userConfirmToken.UserConfirmToken;
+import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
 import home.prozetx.lernenwor.exception.exceptions.UserEmailExists;
 import home.prozetx.lernenwor.exception.exceptions.UserNameExists;
-import home.prozetx.lernenwor.repository.UserConfirmTokenRepository;
+import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final UserConfirmTokenRepository userConfirmTokenRepository;
+    private final EmailConfirmTokenRepository emailConfirmTokenRepository;
 
     @Transactional
     public void saveUser(UserCreation userCreation) {
@@ -38,8 +38,8 @@ public class UserService {
         userRepository.save(user);
         log.info("The new user " + user + " has been successfully saved");
 
-        var userConfirmToken = new UserConfirmToken(user);
-        userConfirmTokenRepository.save(userConfirmToken);
+        var userConfirmToken = new EmailConfirmToken(user);
+        emailConfirmTokenRepository.save(userConfirmToken);
         log.info("The new user confirm token has been successfully saved. Token " + userConfirmToken);
     }
 }

@@ -2,7 +2,11 @@ package home.prozetx.lernenwor.domain.userConfirmToken;
 
 import home.prozetx.lernenwor.domain.user.User;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.UUID;
 
@@ -12,7 +16,7 @@ import java.util.UUID;
 @ToString
 @Getter
 @Setter
-public class UserConfirmToken {
+public class EmailConfirmToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +27,7 @@ public class UserConfirmToken {
     @ManyToOne
     private User user;
 
-    public UserConfirmToken(User user) {
+    public EmailConfirmToken(User user) {
         this.user = user;
         this.token = UUID.randomUUID().toString();
     }

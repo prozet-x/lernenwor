@@ -35,4 +35,8 @@ public class User {
     @NotNull
     @ToString.Exclude
     private String password;
+
+    public void confirmEmail() {
+        this.emailConfirmed = true;
+    }
 }
