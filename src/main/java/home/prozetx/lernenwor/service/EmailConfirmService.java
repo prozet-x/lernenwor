@@ -27,7 +27,6 @@ public class EmailConfirmService {
 
         var user = emailConfirmToken.getUser();
         emailConfirmTokenRepository.deleteByUser(user);
-        user.confirmEmail();
         userRepository.save(user);
         log.info("The email address " + user.getEmail() + " for the " + user.getName() + " user has been successfully confirmed.");
     }

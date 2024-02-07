@@ -29,14 +29,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @ToString.Exclude
-    private boolean emailConfirmed = false;
-
     @NotNull
     @ToString.Exclude
     private String password;
-
-    public void confirmEmail() {
-        this.emailConfirmed = true;
-    }
 }
