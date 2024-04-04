@@ -1,4 +1,4 @@
-FROM gradle:7.4.2-jdk18-alpine
+FROM gradle:7.4.2-jdk17-alpine
 
 EXPOSE 8080
 
