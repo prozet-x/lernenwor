@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  lernenwor:
+    build: .
+    depends_on:
+      - main-db
+
+  main-db
