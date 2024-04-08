@@ -3,8 +3,8 @@ spring:
 #    name: ""
 #    password: ""
 #    url: "jdbc:h2:./lernenwor"
-    name: user
+    name: postgres
     password: user1234
     url: "jdbc:postgresql://maindb:5432"
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yml
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.yml

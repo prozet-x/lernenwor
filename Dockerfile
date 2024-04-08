@@ -8,4 +8,6 @@ COPY . .
 
 RUN gradle installDist
 
+RUN gradle diffChangelog
+
 CMD ["gradle", "run"]
