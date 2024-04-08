@@ -6,5 +6,6 @@ spring:
     name: postgres
     password: user1234
     url: "jdbc:postgresql://maindb:5432"
+    driver-class-name: org.postgresql.Driver
 #  liquibase:
 #    change-log: classpath:db/changelog/db.changelog-master.yml

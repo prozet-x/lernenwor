@@ -3,12 +3,16 @@ version: "3.8"
 services:
   lernenwor:
     build: .
+    restart: always
+    ports:
+      - "8080:8080"
     depends_on:
       maindb:
         condition: service_healthy
 
   maindb:
     image: postgres:alpine3.19
+    restart: always
     user: postgres
     environment:
 #      POSTGRES_USER: user
@@ -27,6 +31,7 @@ services:
 
   adminer:
     image: adminer
+    restart: always
     ports:
       - "5000:8080"
     depends_on:
