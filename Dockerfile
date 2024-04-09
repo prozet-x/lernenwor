@@ -6,8 +6,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN chmod +x ./start_script.sh
+
 RUN gradle installDist
 
-RUN gradle diffChangelog
-
-CMD ["gradle", "run"]
+CMD ["./start_script.sh"]

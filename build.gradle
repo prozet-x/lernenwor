@@ -156,11 +156,11 @@ liquibase {
 	activities {
 		main{
 			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-			url 'jdbc:postgresql://maindb:5432'
+			url 'jdbc:postgresql://maindb:5432/central'
 			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
 					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
 					'&hibernate.connection.driver_class=org.postgresql.Driver' +
-					'&hibernate.connection.url=jdbc:postgresql://maindb:5432/central' +
+//					'&hibernate.connection.url=jdbc:postgresql://maindb:5432/central' +
 					'&hibernate.connection.username=postgres' +
 					'&hibernate.connection.password=user1234' +
 					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
