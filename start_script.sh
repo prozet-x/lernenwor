@@ -1,4 +1,4 @@
 #!/bin/sh
 
-#gradle diffChangelog
+gradle diffChangelog
 gradle run

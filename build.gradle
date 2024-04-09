@@ -43,7 +43,7 @@ dependencies {
 			'org.liquibase:liquibase-core',
 			'com.querydsl:querydsl-jpa:5.0.0:jakarta',
 			'org.mapstruct:mapstruct:1.5.5.Final',
-			'org.postgresql:postgresql:42.1.4'
+			'org.postgresql:postgresql:42.7.3'
 
 	)
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -156,15 +156,17 @@ liquibase {
 	activities {
 		main{
 			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-			url 'jdbc:postgresql://maindb:5432/central'
+			url 'jdbc:postgresql://localhost:5432/central'
 			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
-					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
+					'?dialect=org.hibernate.dialect.PostgreSQL95Dialect' +
+					//org.hibernate.dialect.PostgreSQL95Dialect
 					'&hibernate.connection.driver_class=org.postgresql.Driver' +
 //					'&hibernate.connection.url=jdbc:postgresql://maindb:5432/central' +
 					'&hibernate.connection.username=postgres' +
 					'&hibernate.connection.password=user1234' +
 					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
-					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy' +
+					'&referenceDriver=liquibase.ext.hibernate.database.connection.HibernateDriver' //?????????
 			logLevel 'debug'
 		}
 	}
