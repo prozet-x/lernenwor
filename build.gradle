@@ -1,7 +1,7 @@
 plugins {
 	id 'application'
 	id 'java'
-	id 'org.liquibase.gradle' version '2.2.0'
+	id 'org.liquibase.gradle' version '2.2.1'
 	id 'org.springframework.boot' version '3.1.2-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.1.0'
 }
@@ -67,7 +67,8 @@ dependencies {
 			'com.h2database:h2',
 			'org.postgresql:postgresql:42.7.3',
 			'org.liquibase.ext:liquibase-hibernate6:4.21.1',
-			'org.springframework.boot:spring-boot-starter-data-jpa'
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+			'org.springframework.boot:spring-boot-starter'
 	)
 
 
@@ -157,20 +158,67 @@ liquibase {
 		main{
 			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
 			url 'jdbc:postgresql://localhost:5432/central'
-			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
-					'?dialect=org.hibernate.dialect.PostgreSQL95Dialect' +
+			username 'postgres'
+			password 'user1234'
+			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.domain.user.' +
+					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
+					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl' +
+					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
 					//org.hibernate.dialect.PostgreSQL95Dialect
-					'&hibernate.connection.driver_class=org.postgresql.Driver' +
+//					'&hibernate.connection.driver_class=org.postgresql.Driver' +
 //					'&hibernate.connection.url=jdbc:postgresql://maindb:5432/central' +
-					'&hibernate.connection.username=postgres' +
-					'&hibernate.connection.password=user1234' +
-					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
-					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy' +
-					'&referenceDriver=liquibase.ext.hibernate.database.connection.HibernateDriver' //?????????
+//					'&hibernate.connection.username=postgres' +
+//					'&hibernate.connection.password=user1234' +
+//					'&username=postgres' +
+//					'&password=user1234'
+//					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
+//					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy' +
+//					'&referenceDriver=liquibase.ext.hibernate.database.connection.HibernateDriver' //?????????
 			logLevel 'debug'
 		}
 	}
 }
+
+
+//liquibase {
+//	activities {
+//		main {
+//			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
+//			url 'jdbc:postgresql://localhost:5432/central'
+//			username 'postgres'
+//			password 'user1234'
+//
+//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
+//					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
+//					'&hibernate.connection.driver_class=org.postgresql.Driver' +
+//					'&hibernate.connection.username=postgres' +
+//					'&hibernate.connection.password=user1234'
+//			logLevel 'debug'
+//		}
+//	}
+//}
+
+
+
+
+//liquibase {
+//	activities {
+//		main {
+//			changelogFile "src/main/resources/db/changelog/db.changelog-master.yml" //указываем куда и с каким именем генерится файл
+//			url "jdbc:postgresql://localhost:5432/central"
+//			username "postgres"
+//			password "user1234"
+//			//указываем путь к entity, а так же настройки для hibernate(диалект, сратегии наименования)
+//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.' +
+//			'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
+//			'&hibernate.connection.driver_class=org.postgresql.Driver' +
+//			'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
+//			'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+//			logLevel 'debug' //если хотим видить логи при выполнение команд
+//		}
+//		runList = "main"
+//	}
+//}
 
 
 tasks.named('test') {

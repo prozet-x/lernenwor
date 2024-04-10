@@ -13,13 +13,18 @@ services:
   maindb:
     image: postgres:alpine3.19
     restart: always
-    user: postgres
+#    user: postgres
     environment:
 #      POSTGRES_USER: user
-#      PGUSER: user
+#      PGUSER: postgres
+#      PGPASSWORD: user1234
+#      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: user1234
       POSTGRES_DB: central
+#      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      POSTGRES_INITDB_ARGS: '--auth-host=scram-sha-256 --auth-local=scram-sha-256'
     ports:
       - "5432:5432"
     healthcheck:

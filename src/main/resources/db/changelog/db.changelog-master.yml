@@ -1,2 +1,49 @@
+databaseChangeLog:
+  - databaseChangeLog: []
+
 databaseChangeLog: []
+
+databaseChangeLog: []
+
+databaseChangeLog: []
+
+databaseChangeLog: []
+
+databaseChangeLog: []
+
+databaseChangeLog: []
+
+databaseChangeLog:
+- changeSet:
+    id: 1712772619671-1
+    author: dima (generated)
+    changes:
+    - createSequence:
+        incrementBy: 50
+        sequenceName: USERS_SEQ
+        startValue: 1
+- changeSet:
+    id: 1712772619671-2
+    author: dima (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: USERSPK
+            name: id
+            type: BIGINT
+        - column:
+            name: email
+            type: VARCHAR(255)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: password
+            type: VARCHAR(255)
+        tableName: USERS
 
