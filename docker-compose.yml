@@ -17,6 +17,7 @@ services:
     environment:
 #      POSTGRES_USER: user
 #      PGUSER: user
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: user1234
       POSTGRES_DB: central
     ports:
