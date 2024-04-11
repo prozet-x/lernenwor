@@ -24,6 +24,7 @@ public class UserController {
     private final UserRepository userRepository;
     private final EmailConfirmTokenRepository emailConfirmTokenRepository;
 
+
     @GetMapping
     public ResponseEntity<?> get() {
         var result = new HashMap<String, Object>();
@@ -36,7 +37,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
         Map<String, Object> result = new HashMap<>();
-        log.info("Attempt to register a new user: " + userCreation);
+        log.info(String.format("Attempt to register a new user: %s", userCreation));
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = bindingResult.getFieldErrors().stream()
                     .filter(fieldError -> fieldError.getDefaultMessage() != null)

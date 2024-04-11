@@ -13,3 +13,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+  datasource:
+    username: postgres
+    password: user1234
+    url: "jdbc:postgresql://maindb:5432/central"
+    driver-class-name: org.postgresql.Driver
