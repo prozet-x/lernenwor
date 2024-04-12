@@ -15,14 +15,11 @@ services:
 #    restart: always
 #    user: postgres
     environment:
-#      POSTGRES_USER: user
 #      PGUSER: postgres
 #      PGPASSWORD: user1234
-#      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: user1234
       POSTGRES_DB: central
-#      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
       POSTGRES_HOST_AUTH_METHOD: scram-sha-256
       POSTGRES_INITDB_ARGS: '--auth-host=scram-sha-256 --auth-local=scram-sha-256'
     ports:
@@ -34,12 +31,33 @@ services:
       interval: 20s
       timeout: 10s
       retries: 3
+    volumes:
+      - postgres:/data/postgres
 
-  adminer:
-    image: adminer
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - "5000:8080"
+#    depends_on:
+#      maindb:
+#        condition: service_healthy
+
+  pgadmin:
+    image: dpage/pgadmin4
     restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-abcd-xyz@list.ru}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
-      - "5000:8080"
+      - "5000:80"
     depends_on:
       maindb:
         condition: service_healthy
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  postgres:
+  pgadmin:
