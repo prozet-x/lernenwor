@@ -883,3 +883,40 @@ Caused by: liquibase.exception.ChangeLogParseException: Empty file classpath:db/
 2024-04-17 17:01:54 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-17 17:01:54 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-04-17 17:01:54 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-04-17 20:34:15 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-04-17 20:34:15 [main] INFO  h.p.lernenwor.LernenworApplication - Starting LernenworApplication using Java 17.0.10 with PID 45511 (/home/prozex/projects/lernenwor/build/classes/java/main started by prozex in /home/prozex/projects/lernenwor)
+2024-04-17 20:34:15 [main] INFO  h.p.lernenwor.LernenworApplication - No active profile set, falling back to 1 default profile: "default"
+2024-04-17 20:34:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17 20:34:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+2024-04-17 20:34:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-04-17 20:34:16 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-17 20:34:16 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-17 20:34:16 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-04-17 20:34:16 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-17 20:34:16 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 583 ms
+2024-04-17 20:34:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-04-17 20:34:16 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@236fdf
+2024-04-17 20:34:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-04-17 20:34:16 [main] INFO  liquibase.database - Set default schema name to public
+2024-04-17 20:34:16 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2024-04-17 20:34:16 [main] INFO  liquibase.executor - Changelog query completed.
+2024-04-17 20:34:16 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17 20:34:16 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-04-17 20:34:16 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-04-17 20:34:16 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-04-17 20:34:16 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17 20:34:16 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-04-17 20:34:16 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-17 20:34:16 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17 20:34:17 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-17 20:34:17 [main] WARN  o.s.security.core.userdetails.User - User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2024-04-17 20:34:17 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5cdf61d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4509414e, org.springframework.security.web.context.SecurityContextHolderFilter@3cd758be, org.springframework.security.web.header.HeaderWriterFilter@3b1a3125, org.springframework.security.web.authentication.logout.LogoutFilter@7f69c4c0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@299cddbf, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@25630ede, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@36e9794c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@715d82a0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c8d685e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a5024eb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@78a0d664, org.springframework.security.web.access.ExceptionTranslationFilter@5fa3df, org.springframework.security.web.access.intercept.AuthorizationFilter@20040c6e]
+2024-04-17 20:34:17 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-04-17 20:34:17 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-17 20:34:17 [main] INFO  h.p.lernenwor.LernenworApplication - Started LernenworApplication in 2.111 seconds (process running for 2.254)
+2024-04-17 20:34:21 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-17 20:34:21 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-04-17 20:34:21 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-04-17 20:50:55 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17 20:50:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-04-17 20:50:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
