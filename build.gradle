@@ -157,7 +157,7 @@ liquibase {
 	activities {
 		main{
 			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-			url 'jdbc:postgresql://maindb:5432/central'
+			url 'jdbc:postgresql://localhost:5432/central'
 			username 'postgres'
 			password 'user1234'
 			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.domain' +

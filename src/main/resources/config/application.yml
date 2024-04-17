@@ -12,9 +12,9 @@ spring:
         enabled: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   datasource:
     username: postgres
     password: user1234
-    url: "jdbc:postgresql://maindb:5432/central"
+    url: "jdbc:postgresql://localhost:5432/central"
     driver-class-name: org.postgresql.Driver
