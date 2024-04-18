@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse; /* Удаляет двойные линии между ячейками */
+}
+
+.data-table th, .data-table td {
+  border: 1px dashed #ccc; /* Пунктирные границы */
+  padding: 8px;
+  text-align: left;
+}
+
+.data-table thead {
+  background-color: #f9f9f9;
+}

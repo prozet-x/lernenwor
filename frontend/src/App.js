@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Users from './Users';
+import Users from './DataDisplay';
+import DataDisplay from "./DataDisplay";
 
 function App() {
   return (
       <div>
-        <Users/>
+        <DataDisplay/>
       </div>
   );
 }
