@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    build: ./frontend
+    image: prozet/frontend:latest
     ports:
       - "80:3000"
     depends_on:
@@ -10,7 +10,7 @@ services:
 #        condition: service_healthy
 
   lernenwor:
-    build: .
+    image: prozet/lernenwor:latest
     restart: always
     ports:
       - "5555:8080"
