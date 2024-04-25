@@ -1,7 +1,8 @@
 package home.prozetx.lernenwor.service;
 
+import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
-import home.prozetx.lernenwor.exception.exceptions.EmailTokenExists;
+import home.prozetx.lernenwor.exception.exceptions.EmailTokenNotFoundException;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -22,11 +23,12 @@ public class EmailConfirmService {
         EmailConfirmToken emailConfirmToken = emailConfirmTokenRepository.findByToken(token);
         if (emailConfirmToken == null) {
             log.info("The attempt failed. No such token.");
-            throw new EmailTokenExists("Wrong attempt to confirm email. Token does not exist.");
+            throw new EmailTokenNotFoundException("Wrong attempt to confirm email. Token does not exist.");
         }
 
-        var user = emailConfirmToken.getUser();
+        User user = emailConfirmToken.getUser();
         emailConfirmTokenRepository.deleteByUser(user);
+        user.setConfirmed(true);
         userRepository.save(user);
         log.info("The email address " + user.getEmail() + " for the " + user.getName() + " user has been successfully confirmed.");
     }
