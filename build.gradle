@@ -33,8 +33,25 @@ jar {
 	}
 }
 
+bootRun {
+	// Получаем свойство окружения, заданное через параметры запуска или по умолчанию 'dev'
+	def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
+
+	// Определяем URL на основе выбранного окружения
+	def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для dev
+	if (env == 'prod') {
+		dbUrl = 'jdbc:postgresql://maindb:5432/central'
+	} else if (env == 'test') {
+		dbUrl = 'jdbc:postgresql://testdb:5432/testcentral'
+	}
+
+	// Передаем свойства в JVM
+	systemProperty 'spring.datasource.url', dbUrl
+	systemProperty 'spring.profiles.active', env
+}
+
 dependencies {
-	implementation (
+	implementation(
 			'org.springframework.boot:spring-boot-starter',
 			'org.springframework.boot:spring-boot-starter-data-jpa',
 			'org.springframework.boot:spring-boot-starter-validation',
@@ -70,94 +87,21 @@ dependencies {
 			'org.springframework.boot:spring-boot-starter-data-jpa',
 			'org.springframework.boot:spring-boot-starter'
 	)
-
-
-
-
-//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-//
-//	compileOnly 'org.projectlombok:lombok'
-//
-//	implementation(
-//			'org.springframework.boot:spring-boot-starter-data-jpa',
-//			'org.springframework.boot:spring-boot-starter-web',
-//			'org.springframework.boot:spring-boot-starter-actuator',
-//			'org.springframework.boot:spring-boot-starter-validation',
-//			'org.springframework.boot:spring-boot-starter-security',
-//			'io.jsonwebtoken:jjwt:0.9.1',
-//			// Зависимость для swagger
-//			// Позволяет сгенерировать и проматривать интерактивную документацию по API
-//			//'org.springdoc:springdoc-openapi-ui:1.7.0',
-//			'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0',
-//			'org.liquibase:liquibase-core',
-//			'com.querydsl:querydsl-jpa:5.0.0:jakarta',
-//			//'com.rollbar:rollbar-spring-boot-webmvc:1.10.0',
-//			'com.rollbar:rollbar-spring-boot3-webmvc:1.+'
-//	)
-//
-//	testImplementation(
-//			'org.springframework.boot:spring-boot-starter-test'
-//	)
-//
-//	annotationProcessor(
-//			'org.projectlombok:lombok',
-//			'com.querydsl:querydsl-apt:5.0.0:jakarta',
-//			'jakarta.persistence:jakarta.persistence-api:3.1.0'
-//	)
-//
-//	liquibaseRuntime(
-//			sourceSets.main.output,
-//			'org.liquibase:liquibase-core',
-//			'info.picocli:picocli:4.7.1',
-//			'org.liquibase.ext:liquibase-hibernate6:4.21.1',
-//			'org.springframework.boot:spring-boot-starter-data-jpa',
-//			'com.h2database:h2',
-//	)
-//
-//	runtimeOnly (
-//			'com.h2database:h2',
-//			'org.postgresql:postgresql:42.6.0'
-//	)
 }
 
-//liquibase {
-//	activities {
-//		main {
-//			// Указываем путь, по которому будет сгенерирован файл миграции
-//			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-//			// Указывем источник, с которым будут сравниваться изменения
-//			// Это база данных, изначально она пустая
-//			url 'jdbc:h2:./taskDB'
-//			// Сравниваем с моделями, задавая пакет
-//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
-//					// Указываем диалект
-//					'?dialect=org.hibernate.dialect.H2Dialect' +
-//					// Указываем правила именования таблиц и столбцов,
-//					// чтобы они соответствовали правилам Spring
-//					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy'
-//		}
-//	}
-//}
+def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
 
-//liquibase {
-//	activities {
-//		main{
-//			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-//			url 'jdbc:h2:./lernenwor'
-//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
-//					'?dialect=org.hibernate.dialect.H2Dialect' +
-//					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
-//					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
-//			logLevel 'debug'
-//		}
-//	}
-//}
-
+def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для dev
+if (env == 'prod') {
+	dbUrl = 'jdbc:postgresql://maindb:5432/central'
+} else if (env == 'test') {
+	dbUrl = 'jdbc:postgresql://testdb:5432/testcentral'
+}
 liquibase {
 	activities {
 		main{
 			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-			url 'jdbc:postgresql://maindb:5432/central'
+			url dbUrl
 			username 'postgres'
 			password 'user1234'
 			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.domain' +
@@ -179,50 +123,49 @@ liquibase {
 	}
 }
 
-
-//liquibase {
-//	activities {
-//		main {
-//			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-//			url 'jdbc:postgresql://localhost:5432/central'
-//			username 'postgres'
-//			password 'user1234'
-//
-//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.model.' +
-//					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
-//					'&hibernate.connection.driver_class=org.postgresql.Driver' +
-//					'&hibernate.connection.username=postgres' +
-//					'&hibernate.connection.password=user1234'
-//			logLevel 'debug'
-//		}
-//	}
-//}
-
-
-
-
-//liquibase {
-//	activities {
-//		main {
-//			changelogFile "src/main/resources/db/changelog/db.changelog-master.yml" //указываем куда и с каким именем генерится файл
-//			url "jdbc:postgresql://localhost:5432/central"
-//			username "postgres"
-//			password "user1234"
-//			//указываем путь к entity, а так же настройки для hibernate(диалект, сратегии наименования)
-//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.' +
-//			'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
-//			'&hibernate.connection.driver_class=org.postgresql.Driver' +
-//			'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
-//			'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
-//			logLevel 'debug' //если хотим видить логи при выполнение команд
-//		}
-//		runList = "main"
-//	}
-//}
-
-
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
 //diffChangelog.mustRunAfter build
+
+
+
+
+
+//// Функция для определения URL базы данных
+//def determineDbUrl() {
+//	def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
+//	switch (env) {
+//		case 'prod':
+//			return 'jdbc:postgresql://maindb:5432/central'
+//		case 'test':
+//			return 'jdbc:postgresql://testdb:5432/testcentral'
+//		default:
+//			return 'jdbc:postgresql://localhost:5432/central'
+//	}
+//}
+//
+//// Задача bootRun
+//bootRun {
+//	def dbUrl = determineDbUrl()
+//	systemProperty 'spring.datasource.url', dbUrl
+//	systemProperty 'spring.profiles.active', env
+//}
+//
+//// Конфигурация Liquibase
+//liquibase {
+//	activities {
+//		main {
+//			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
+//			url determineDbUrl()
+//			username 'postgres'
+//			password 'user1234'
+//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.domain' +
+//					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
+//					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
+//					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+//			logLevel 'debug'
+//		}
+//	}
+//}
