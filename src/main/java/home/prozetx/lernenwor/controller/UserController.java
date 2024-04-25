@@ -30,7 +30,6 @@ public class UserController {
         var result = new HashMap<String, Object>();
         result.put("users", userRepository.findAll());
         result.put("tokens", emailConfirmTokenRepository.findAll());
-        result.put("tests", emailConfirmTokenRepository.findAll());
 
         return ResponseEntity.ok(result);
     }
