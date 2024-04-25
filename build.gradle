@@ -33,22 +33,22 @@ jar {
 	}
 }
 
+def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
+
+// Определяем URL на основе выбранного окружения
+def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для dev
+if (env == 'prod') {
+	dbUrl = 'jdbc:postgresql://maindb:5432/central'
+} else if (env == 'test') {
+	dbUrl = 'jdbc:postgresql://testdb:5432/testcentral'
+}
+
 bootRun {
-	// Получаем свойство окружения, заданное через параметры запуска или по умолчанию 'dev'
-	def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
-
-	// Определяем URL на основе выбранного окружения
-	def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для dev
-	if (env == 'prod') {
-		dbUrl = 'jdbc:postgresql://maindb:5432/central'
-	} else if (env == 'test') {
-		dbUrl = 'jdbc:postgresql://testdb:5432/testcentral'
-	}
-
 	// Передаем свойства в JVM
 	systemProperty 'spring.datasource.url', dbUrl
 	systemProperty 'spring.profiles.active', env
 }
+
 
 dependencies {
 	implementation(
@@ -89,14 +89,6 @@ dependencies {
 	)
 }
 
-def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
-
-def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для dev
-if (env == 'prod') {
-	dbUrl = 'jdbc:postgresql://maindb:5432/central'
-} else if (env == 'test') {
-	dbUrl = 'jdbc:postgresql://testdb:5432/testcentral'
-}
 liquibase {
 	activities {
 		main{
@@ -128,44 +120,3 @@ tasks.named('test') {
 }
 
 //diffChangelog.mustRunAfter build
-
-
-
-
-
-//// Функция для определения URL базы данных
-//def determineDbUrl() {
-//	def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
-//	switch (env) {
-//		case 'prod':
-//			return 'jdbc:postgresql://maindb:5432/central'
-//		case 'test':
-//			return 'jdbc:postgresql://testdb:5432/testcentral'
-//		default:
-//			return 'jdbc:postgresql://localhost:5432/central'
-//	}
-//}
-//
-//// Задача bootRun
-//bootRun {
-//	def dbUrl = determineDbUrl()
-//	systemProperty 'spring.datasource.url', dbUrl
-//	systemProperty 'spring.profiles.active', env
-//}
-//
-//// Конфигурация Liquibase
-//liquibase {
-//	activities {
-//		main {
-//			changelogFile 'src/main/resources/db/changelog/db.changelog-master.yml'
-//			url determineDbUrl()
-//			username 'postgres'
-//			password 'user1234'
-//			referenceUrl 'hibernate:spring:home.prozetx.lernenwor.domain' +
-//					'?dialect=org.hibernate.dialect.PostgreSQLDialect' +
-//					'&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy' +
-//					'&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
-//			logLevel 'debug'
-//		}
-//	}
-//}

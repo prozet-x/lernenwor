@@ -1,11 +1,11 @@
-runenvironment-dev:
-	docker compose -f docker-compose-work-environment.yml up
+run-environment-dev:
+	docker compose -f docker-compose-dev.yml up
 
 stop-environment-dev:
-	docker compose -f docker-compose-work-environment.yml down
+	docker compose -f docker-compose-dev.yml down
 
 run-dev:
-	gradle bootRun -Pprod=false -Pspring.profiles.active=dev
+	./gradlew bootRun -Penv=dev -Pspring.profiles.active=dev
 
 show-5342-listener:
-	sudo lsof -nP -iTCP:5432 -sTCP:LISTEN
+	sudo lsof -sudo -iTCP:5432 -sTCP:LISTEN
