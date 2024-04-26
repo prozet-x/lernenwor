@@ -38,7 +38,7 @@ services:
       POSTGRES_HOST_AUTH_METHOD: scram-sha-256
       POSTGRES_INITDB_ARGS: '--auth-host=scram-sha-256 --auth-local=scram-sha-256'
     ports:
-      - "5432:5432"
+      - "5432:5432" //Убрать?
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       start_period: 10s

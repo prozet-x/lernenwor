@@ -6,6 +6,7 @@ import DataDisplay from "./DataDisplay";
 function App() {
   return (
       <div>
+          <h1>Data</h1>
         <DataDisplay/>
       </div>
   );
