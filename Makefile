@@ -1,5 +1,5 @@
 run-environment-dev:
-	@docker compose -f docker-compose-dev.yml up
+	@bash run_dev_env.sh
 
 stop-environment-dev:
 	@docker compose -f docker-compose-dev.yml down
@@ -7,5 +7,5 @@ stop-environment-dev:
 run-dev:
 	@./gradlew bootRun -Penv=dev
 
-sr:
-	@sudo lsof -i :5432 -sTCP:LISTEN -t || echo "No app listening to 5432 port"
+show-5432-listener:
+	@sudo lsof -i :5432 -sTCP:LISTEN -t || echo "No app is listening to 5432 port"

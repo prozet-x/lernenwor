@@ -7,8 +7,9 @@ function DataDisplay() {
 
     useEffect(() => {
         // Здесь URL вашего API
-        axios.get('/users')
+        axios.get('http://192.168.2.148:8080/api/users')
             .then(response => {
+                console.log(response.data);
                 setData(response.data);
             })
             .catch(error => console.error('Ошибка при загрузке данных:', error));
@@ -38,6 +39,8 @@ function DataDisplay() {
 
     return (
         <div>
+            <h1>Данные с сервера</h1>
+            <p>{process.env.REACT_APP_BACKEND_URL}</p>
             {Object.keys(data).map(key =>
                 Array.isArray(data[key]) && data[key].length > 0 ? renderTable(key, data[key]) : null
             )}
