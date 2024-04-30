@@ -2,4 +2,4 @@
 
 gradle diffChangelog
 gradle update
-gradle run
+gradle bootRun -Penv=prod
