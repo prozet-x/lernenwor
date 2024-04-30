@@ -11,7 +11,7 @@ services:
 
   lernenwor:
     image: prozet/lernenwor:${GIT_COMMIT}
-    restart: always
+    restart: on-failure
     ports:
       - "5555:8080"
     depends_on:
