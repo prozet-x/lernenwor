@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+cors:
+  enabled: false
+
 spring:
   application:
     name: lernenwor

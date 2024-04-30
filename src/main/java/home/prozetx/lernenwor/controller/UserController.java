@@ -26,6 +26,7 @@ public class UserController {
 
 
     @GetMapping
+//    @CrossOrigin(origins = "*")
     public ResponseEntity<?> get() {
         var result = new HashMap<String, Object>();
         result.put("users", userRepository.findAll());
