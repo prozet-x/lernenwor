@@ -13,8 +13,8 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-      servlet:
-        path: /api
+    servlet:
+      path: /api
   jpa:
     hibernate:
       ddl-auto: update
