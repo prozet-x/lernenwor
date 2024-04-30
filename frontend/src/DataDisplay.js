@@ -7,7 +7,7 @@ function DataDisplay() {
 
     useEffect(() => {
         // Здесь URL вашего API
-        axios.get('http://192.168.2.148:8080/api/users')
+        axios.get('http://192.168.0.105:8080/api/users')
             .then(response => {
                 console.log(response.data);
                 setData(response.data);

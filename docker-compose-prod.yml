@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    image: prozet/frontend:ae97ae48 #:${GIT_COMMIT}
+    image: prozet/frontend:e5fab7a8 #:${GIT_COMMIT}
     ports:
       - "8000:3000"
     depends_on:
@@ -10,7 +10,7 @@ services:
 #        condition: service_healthy
 
   lernenwor:
-    image: prozet/lernenwor:ae97ae48 #:${GIT_COMMIT}
+    image: prozet/lernenwor:e5fab7a8 #:${GIT_COMMIT}
     restart: on-failure
     ports:
       - "5555:8080"

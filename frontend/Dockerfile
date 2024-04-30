@@ -6,8 +6,8 @@ WORKDIR /app
 
 COPY ./package.json .
 COPY ./package-lock.json .
-COPY ./src .
-COPY ./public .
+COPY ./src/ ./src
+COPY ./public/ ./public
 
 RUN npm install --silent
 
