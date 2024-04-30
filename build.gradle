@@ -33,7 +33,7 @@ jar {
 	}
 }
 
-def env = project.hasProperty('env') ? project.getProperty('env') : 'dev'
+def env = project.hasProperty('env') ? project.getProperty('env') : 'prod'
 
 // Определяем URL на основе выбранного окружения
 def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для dev
