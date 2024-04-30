@@ -13,9 +13,11 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+      servlet:
+        path: /api
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
   datasource:
     username: postgres
     password: user1234
