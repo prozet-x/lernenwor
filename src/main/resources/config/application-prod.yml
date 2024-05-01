@@ -2,7 +2,7 @@ server:
   port: 8080
 
 cors:
-  enabled: false
+  enabled: true
 
 spring:
   application:
