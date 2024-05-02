@@ -6,7 +6,7 @@ function DataDisplay() {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        axios.get('/api/users')
+        axios.get('http://localhost:5555/api/users')
             .then(response => {
                 console.log(response.data);
                 setData(response.data);

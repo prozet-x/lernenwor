@@ -5,7 +5,7 @@ module.exports = function(app) {
         '/api',
         createProxyMiddleware({
             // target: process.env.REACT_APP_BACKEND_URL,
-            target: 'http://192.168.0.105:5555/api',
+            target: 'lernenwor:5555',
             changeOrigin: true,
         })
     );
