@@ -1,4 +1,4 @@
-Dockerfile
+Dockerfile_prod
 .dockerignore
 .gitignore
 README.md
