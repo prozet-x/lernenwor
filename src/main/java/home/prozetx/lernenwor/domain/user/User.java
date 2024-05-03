@@ -33,5 +33,6 @@ public class User {
     @ToString.Exclude
     private String password;
 
+    @NotNull
     private boolean confirmed = false;
 }
