@@ -33,5 +33,6 @@ public class User {
     @ToString.Exclude
     private String password;
 
+    @Column(columnDefinition = "boolean default false")
     private boolean confirmed = false;
 }
