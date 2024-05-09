@@ -2,7 +2,9 @@ version: "3.8"
 
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile_dev
     ports:
       - "3333:3000"
     environment:
@@ -49,6 +51,16 @@ services:
         condition: service_healthy
     volumes:
       - pgadmin:/var/lib/pgadmin
+
+  nginx:
+    image: nginx:stable-alpine3.19
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx_dev.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - pgadmin
 
 volumes:
   postgres:
