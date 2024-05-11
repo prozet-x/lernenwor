@@ -1,5 +1,6 @@
 run-environment-dev:
-	@bash run_dev_env.sh
+#	@bash run_dev_env.sh
+	docker compose -f docker-compose-dev.yml up
 
 stop-environment-dev:
 	@docker compose -f docker-compose-dev.yml down
