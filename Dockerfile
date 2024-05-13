@@ -14,4 +14,4 @@ COPY ./build/libs/lernenwor-0.0.1-SNAPSHOT.jar ./app.jar
 
 #CMD ["./start_script.sh"]
 
-CMD ["./start_script.sh"]
+ENTRYPOINT ["java","-jar","/app.jar"]
