@@ -1,4 +1,0 @@
-FROM nginx:stable-alpine3.19
-EXPOSE 80
-COPY nginx_prod.conf /etc/nginx/nginx.conf
-CMD ["nginx", "-g", "daemon off;"]
