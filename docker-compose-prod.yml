@@ -3,11 +3,11 @@ version: "3.8"
 services:
   frontend:
     image: prozet/frontend:${GIT_COMMIT}
+    ports:
+      - "3000:3000"
 #    build:
 #      context: ./frontend
 #      dockerfile: Dockerfile_prod
-    ports:
-      - "80:80"
     depends_on:
       - lernenwor
 #        condition: service_healthy
@@ -16,8 +16,6 @@ services:
     image: prozet/lernenwor:${GIT_COMMIT}
 #    build: .
     #restart: on-failure
-#    ports:
-#      - "5555:8080"
     depends_on:
       maindb:
         condition: service_healthy
@@ -67,6 +65,16 @@ services:
         condition: service_healthy
     volumes:
       - pgadmin:/var/lib/pgadmin
+
+  nginx:
+    image: prozet/nginx:${GIT_COMMIT}
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - pgadmin
+      - lernenwor
+      - maindb
 
 volumes:
   postgres:
