@@ -1,22 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1713347640440-1
-    author: prozex (generated)
-    changes:
-    - createSequence:
-        incrementBy: 50
-        sequenceName: email_confirm_token_seq
-        startValue: 1
-- changeSet:
-    id: 1713347640440-2
-    author: prozex (generated)
-    changes:
-    - createSequence:
-        incrementBy: 50
-        sequenceName: users_seq
-        startValue: 1
-- changeSet:
-    id: 1713347640440-3
+    id: 1715699747880-1
     author: prozex (generated)
     changes:
     - createTable:
@@ -37,7 +21,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: email_confirm_token
 - changeSet:
-    id: 1713347640440-4
+    id: 1715699747880-2
     author: prozex (generated)
     changes:
     - createTable:
@@ -51,6 +35,10 @@ databaseChangeLog:
             name: id
             type: BIGINT
         - column:
+            defaultValueBoolean: false
+            name: confirmed
+            type: BOOLEAN
+        - column:
             name: email
             type: VARCHAR(255)
         - column:
@@ -61,7 +49,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: users
 - changeSet:
-    id: 1713347640440-5
+    id: 1715699747880-3
     author: prozex (generated)
     changes:
     - addForeignKeyConstraint:
