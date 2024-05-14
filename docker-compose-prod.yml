@@ -4,7 +4,7 @@ services:
   frontend:
     image: prozet/frontend:${GIT_COMMIT}
     ports:
-      - "3000:3000"
+      - "80:80"
 #    build:
 #      context: ./frontend
 #      dockerfile: Dockerfile_prod
