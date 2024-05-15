@@ -5,35 +5,20 @@ services:
     image: prozet/frontend:${GIT_COMMIT}
     ports:
       - "80:80"
-#    build:
-#      context: ./frontend
-#      dockerfile: Dockerfile_prod
     depends_on:
       - lernenwor
-#        condition: service_healthy
 
   lernenwor:
     image: prozet/lernenwor:${GIT_COMMIT}
-#    build: .
-    #restart: on-failure
     depends_on:
       maindb:
         condition: service_healthy
-#    healthcheck:
-#      test: ["CMD-SHELL", "curl -f http://localhost:5555 || exit 1"]
-#      start_period: 10s
-#      start_interval: 5s
-#      interval: 20s
-#      timeout: 10s
-#      retries: 3
+      pgadmin:
+        condition: service_started
 
   maindb:
     image: postgres:alpine3.19
-#    restart: always
-#    user: postgres
     environment:
-#      PGUSER: postgres
-#      PGPASSWORD: user1234
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: user1234
       POSTGRES_DB: central
@@ -44,7 +29,6 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       start_period: 10s
-      start_interval: 5s
       interval: 20s
       timeout: 10s
       retries: 3
