@@ -30,7 +30,6 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       start_period: 10s
-      start_interval: 5s
       interval: 20s
       timeout: 10s
       retries: 3
@@ -39,7 +38,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    restart: always
+    restart: on-failure
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-abcd-xyz@list.ru}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
@@ -63,7 +62,15 @@ services:
       - frontend
       - pgadmin
 
+  hashicorp_vault:
+    image: vault:1.13.3
+    ports:
+      - "8200:8200"
+    volumes:
+      - vault-file:/vault/file
+
 volumes:
   postgres:
   pgadmin:
   frontend:
+  vault-file:
