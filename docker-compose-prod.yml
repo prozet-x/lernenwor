@@ -18,9 +18,18 @@ services:
 
   maindb:
     image: postgres:alpine3.19
+    secrets:
+      - postgres_password
+      - postgres_user
+    entrypoint: [ "sh", "-c" ]
+    command:
+      - |
+        export POSTGRES_USER=$(cat /run/secrets/postgres_user)
+        export POSTGRES_PASSWORD=$(cat /run/secrets/postgres_password)
+        docker-entrypoint.sh postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: user1234
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: user1234
       POSTGRES_DB: central
       POSTGRES_HOST_AUTH_METHOD: scram-sha-256
       POSTGRES_INITDB_ARGS: '--auth-host=scram-sha-256 --auth-local=scram-sha-256'
@@ -49,6 +58,12 @@ services:
         condition: service_healthy
     volumes:
       - pgadmin:/var/lib/pgadmin
+
+secrets:
+  postgres_user:
+    external: true
+  postgres_password:
+    external: true
 
 volumes:
   postgres:

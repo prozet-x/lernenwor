@@ -62,15 +62,7 @@ services:
       - frontend
       - pgadmin
 
-  hashicorp_vault:
-    image: vault:1.13.3
-    ports:
-      - "8200:8200"
-    volumes:
-      - vault-file:/vault/file
-
 volumes:
   postgres:
   pgadmin:
   frontend:
-  vault-file:
