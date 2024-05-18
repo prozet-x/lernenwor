@@ -16,7 +16,7 @@ spring:
     hibernate:
       ddl-auto: validate
   datasource:
-    username: postgres
-    password: user1234
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     url: "jdbc:postgresql://maindb:5432/central"
     driver-class-name: org.postgresql.Driver

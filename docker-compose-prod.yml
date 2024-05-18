@@ -10,6 +10,15 @@ services:
 
   lernenwor:
     image: prozet/lernenwor:${GIT_COMMIT}
+    secrets:
+      - postgres_password
+      - postgres_user
+    entrypoint: [ "sh", "-c" ]
+    command:
+      - |
+        export POSTGRES_USER=$(cat /run/secrets/postgres_user)
+        export POSTGRES_PASSWORD=$(cat /run/secrets/postgres_password)
+        java -jar /app/app.jar --spring.profiles.active=prod
     depends_on:
       maindb:
         condition: service_healthy
