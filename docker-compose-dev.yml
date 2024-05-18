@@ -13,6 +13,9 @@ services:
 
   maindb:
     image: postgres:alpine3.19
+    secrets:
+      - postgres_password
+      - postgres_user
     entrypoint: [ "sh", "-c" ]
     command:
       - |
