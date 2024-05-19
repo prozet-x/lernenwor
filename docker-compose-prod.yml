@@ -17,10 +17,8 @@ services:
       POSTGRES_USER_FILE: /run/secrets/postgres_user
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
     depends_on:
-      maindb:
-        condition: service_healthy
-      pgadmin:
-        condition: service_started
+      - maindb
+#      - pgadmin
 
   maindb:
     image: postgres:alpine3.19
@@ -54,8 +52,13 @@ services:
     ports:
       - "8888:80"
     depends_on:
-      maindb:
-        condition: service_healthy
+      - maindb
+#    healthcheck:
+#      test: ["CMD-SHELL", "curl -f http://localhost:80 || exit 1"]
+#      start_period: 10s
+#      interval: 20s
+#      timeout: 10s
+#      retries: 3
     volumes:
       - pgadmin:/var/lib/pgadmin
 
