@@ -8,4 +8,4 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/lernenwor-0.0.1-SNAPSHOT.jar /app/app.jar
 COPY ./entrypoint_prod.sh /app/entrypoint_prod.sh
 EXPOSE 8080
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint_prod.sh"]
