@@ -17,7 +17,7 @@ spring:
       path: /api
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
   datasource:
     username: postgres
     password: user1234

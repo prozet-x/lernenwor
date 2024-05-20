@@ -18,7 +18,8 @@ import java.util.UUID;
 @Setter
 public class EmailConfirmToken {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "email_confirm_token_seq")
+    @SequenceGenerator(name = "email_confirm_token_seq", sequenceName = "email_confirm_token_id_seq", allocationSize = 1)
     private Long id;
 
     @ToString.Exclude
