@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: lernenwor
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yml
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    servlet:
+      path: /api
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    username: postgres
+    password: password
+    url: "jdbc:postgresql://maindb:5432/central"
+    driver-class-name: org.postgresql.Driver
