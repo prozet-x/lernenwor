@@ -33,20 +33,27 @@ jar {
 	}
 }
 
-def env = project.hasProperty('env') ? project.getProperty('env') : 'prod'
+def env = project.hasProperty('env') ? project['env'] : 'prod'
 
 // Определяем URL на основе выбранного окружения
-def dbUrl = 'jdbc:postgresql://localhost:5432/central' // Значение по умолчанию для prod
-if (env == 'dev') {
+def dbUrl = 'jdbc:postgresql://maindb:5432/central' // Значение по умолчанию для prod
+if (env == 'dev' || env == 'dev-debug') {
 	dbUrl = 'jdbc:postgresql://localhost:5432/central'
 } else if (env == 'test') {
 	dbUrl = 'jdbc:postgresql://testdb:5432/testcentral'
 }
 
 bootRun {
-	// Передаем свойства в JVM
-	systemProperty 'spring.datasource.url', dbUrl
-	systemProperty 'spring.profiles.active', env
+	if (project.hasProperty('env')) {
+		if (project.getProperty('env') == 'dev-debug') {
+			jvmArgs = [
+					"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+			]
+		}
+		// Передаем свойства в JVM
+		systemProperty 'spring.datasource.url', dbUrl
+		systemProperty 'spring.profiles.active', env
+	}
 }
 
 

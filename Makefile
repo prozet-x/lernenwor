@@ -8,5 +8,8 @@ stop-environment-dev:
 run-dev:
 	@./gradlew bootRun -Penv=dev
 
+run-dev-debug:
+	@./gradlew bootRun -Penv=dev-debug
+
 show-5432-listener:
 	@sudo lsof -i :5432 -sTCP:LISTEN -t || echo "No app is listening to 5432 port"
