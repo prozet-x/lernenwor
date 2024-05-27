@@ -47,7 +47,7 @@ bootRun {
 	if (project.hasProperty('env')) {
 		if (project.getProperty('env') == 'dev-debug') {
 			jvmArgs = [
-					"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+					"-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005"
 			]
 		}
 		// Передаем свойства в JVM
