@@ -1,9 +1,6 @@
 server:
   port: 8080
 
-cors:
-  enabled: true
-
 spring:
   application:
     name: lernenwor
@@ -21,5 +18,4 @@ spring:
   datasource:
     username: postgres
     password: user1234
-#    url: "jdbc:postgresql://localhost:5432/central"
     driver-class-name: org.postgresql.Driver
