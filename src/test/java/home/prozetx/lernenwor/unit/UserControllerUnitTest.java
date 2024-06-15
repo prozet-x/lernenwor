@@ -23,9 +23,9 @@ import org.springframework.validation.BindingResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
@@ -61,21 +61,12 @@ public class UserControllerUnitTest {
 
         //then
         var response = userController.get();
+        Map<?, ?> responseBody = (Map<?, ?>) response.getBody();
+
         assertNotNull(response);
+        assertNotNull(responseBody);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-
-        ParameterizedTypeReference<Map<String, Object>> responseType = new ParameterizedTypeReference<>() {};
-        ResponseEntity<Map<String, Object>> typedResponse = new ResponseEntity<>(response.getBody(), response.getHeaders(), response.getStatusCode());
-
-        Map<String, Object> responseBody = typedResponse.getBody();
-        //assertEquals(users, response.getBody().get("users"));
-
-//        UserCreation userCreation = new UserCreation("name", "abc@mail.ru", "password", "password");
-//        var responseEntity = userController.createNew(userCreation,
-//                new BeanPropertyBindingResult(userCreation, "userCreation")
-//        );
-//
-//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-//        assertEquals();
+        assertEquals(users, responseBody.get("users"));
+        assertEquals(tokens, responseBody.get("tokens"));
     }
 }
