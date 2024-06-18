@@ -12,21 +12,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.AbstractBindingResult;
-import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
 public class UserControllerUnitTest {
@@ -44,7 +39,7 @@ public class UserControllerUnitTest {
     UserController userController;
 
     @Test
-    void testGetAll() {
+    void testGetAll_returnsValidResponse() {
         //given
         List<User> users = List.of(
                 new User(1L, "name1", "email1@mail.ru", "password1", false),
@@ -68,5 +63,22 @@ public class UserControllerUnitTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(users, responseBody.get("users"));
         assertEquals(tokens, responseBody.get("tokens"));
+    }
+
+    @Test
+    void testCreateNew_validUserCreation_returnEmptyResult(){
+        //given
+        BindingResult bindingResult = mock(BindingResult.class);
+        UserCreation userCreation = new UserCreation("name", "a@b.com", "password", "password");
+        User user = new User(1L, "name", "a@b.com", "password", false);
+
+        //when
+        doReturn(false).when(bindingResult).hasErrors();
+        doReturn(user).when(userService).saveUser(userCreation);
+
+        //then
+        var response = userController.createNew(userCreation, bindingResult);
+        assertNotNull(response);
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
 }

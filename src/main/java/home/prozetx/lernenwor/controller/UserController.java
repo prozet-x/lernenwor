@@ -1,5 +1,6 @@
 package home.prozetx.lernenwor.controller;
 
+import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
@@ -11,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -46,7 +50,14 @@ public class UserController {
             log.info("The attempt failed: " + errors);
             return ResponseEntity.badRequest().body(result);
         }
-        userService.saveUser(userCreation);
-        return ResponseEntity.ok(result);
+
+        User user = userService.saveUser(userCreation);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/{id}")
+                .buildAndExpand(user.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).body(user);
     }
 }

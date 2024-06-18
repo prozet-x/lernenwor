@@ -23,7 +23,7 @@ public class UserService {
     private final EmailConfirmTokenRepository emailConfirmTokenRepository;
 
     @Transactional
-    public void saveUser(UserCreation userCreation) {
+    public User saveUser(UserCreation userCreation) {
         if (userRepository.existsByName(userCreation.name())) {
             log.info("Attempt to create a user with an existing name: " + userCreation);
             throw new UserNameExists(userCreation.name());
@@ -35,11 +35,13 @@ public class UserService {
         User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
         log.info("The new user " + user + " has been successfully saved");
 
         var userConfirmToken = new EmailConfirmToken(user);
         emailConfirmTokenRepository.save(userConfirmToken);
         log.info("The new user confirm token has been successfully saved. Token " + userConfirmToken);
+
+        return savedUser;
     }
 }
