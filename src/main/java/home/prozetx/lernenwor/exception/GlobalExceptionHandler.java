@@ -27,4 +27,6 @@ public class GlobalExceptionHandler {
     ResponseEntity<Map<String, Object>> handleEmailTokenExists(EmailTokenNotFoundException ex) {
         return ResponseEntity.status(BAD_REQUEST).body(Map.of("error", ex.getMessage()));
     }
+
+//    @ExceptionHandler()
 }

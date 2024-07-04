@@ -44,4 +44,8 @@ public class UserService {
 
         return savedUser;
     }
+
+    public boolean userExistsByUsername(String username) {
+        return userRepository.existsByName(username);
+    }
 }

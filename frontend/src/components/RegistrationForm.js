@@ -32,7 +32,7 @@ function RegistrationForm() {
 
     const checkUsernameExists = async (username) => {
         try {
-            const response = await fetch(`/api/check-username/${username}`);
+            const response = await fetch(`/api/v1/check-username/${username}`);
             const { exists } = await response.json();
             setUsernameValid(!exists);
         } catch (error) {

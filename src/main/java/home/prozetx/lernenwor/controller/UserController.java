@@ -6,7 +6,10 @@ import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -22,7 +25,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @RestController
 @Slf4j
-@RequestMapping("users")
+@RequestMapping("v1/users")
 public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
@@ -59,5 +62,10 @@ public class UserController {
                 .toUri();
 
         return ResponseEntity.created(location).body(user);
+    }
+
+    @GetMapping("check-username-exists/{username}")
+    public ResponseEntity<?> checkUserNameExists(@PathVariable("username") @NotBlank String username) {
+        return ResponseEntity.ok(userService.userExistsByUsername(username));
     }
 }
