@@ -16,7 +16,6 @@ function RegistrationForm() {
                 checkUsernameExists(formData.username);
             }
         }, 500); // Задержка в 500 мс
-
         return () => clearTimeout(timer);
     }, [formData.username]);
 
@@ -26,27 +25,36 @@ function RegistrationForm() {
                 checkEmailExists(formData.email);
             }
         }, 500); // Задержка в 500 мс
-
         return () => clearTimeout(timer);
     }, [formData.email]);
 
     const checkUsernameExists = async (username) => {
+        if (!username.trim()) return;
+
         try {
-            const response = await fetch(`/api/v1/check-username/${username}`);
-            const { exists } = await response.json();
-            setUsernameValid(!exists);
+            const response = await fetch(`/api/v1/users/check-username-exists/${username}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setUsernameValid(!data.username_exists);
         } catch (error) {
             console.error('Ошибка при проверке логина:', error);
         }
     };
 
     const checkEmailExists = async (email) => {
+        if (!email.trim()) return;
+
         try {
-            const response = await fetch(`/api/check-email/${email}`);
-            const { exists } = await response.json();
-            setEmailValid(!exists);
+            const response = await fetch(`/api/v1/users/check-user-email-exists/${email}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setEmailValid(!data.user_email_exists);
         } catch (error) {
-            console.error('Ошибка при проверке почты:', error);
+            console.error('Ошибка при проверке почтового адреса:', error);
         }
     };
 

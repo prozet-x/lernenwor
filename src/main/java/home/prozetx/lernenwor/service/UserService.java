@@ -45,7 +45,11 @@ public class UserService {
         return savedUser;
     }
 
-    public boolean userExistsByUsername(String username) {
+    public Boolean userExistsByUsername(String username) {
         return userRepository.existsByName(username);
+    }
+
+    public Boolean userExistsByEmail(String email) {
+        return userRepository.existsByEmail(email);
     }
 }

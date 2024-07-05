@@ -6,7 +6,7 @@ function DataDisplay() {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        axios.get('/api/users')
+        axios.get('/api/v1/users')
             .then(response => {
                 console.log(response.data);
                 setData(response.data);
