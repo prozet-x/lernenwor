@@ -34,6 +34,7 @@ public class UserService {
         }
         User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
 
+        user.setEmail(user.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         log.info("The new user " + user + " has been successfully saved");
@@ -50,6 +51,6 @@ public class UserService {
     }
 
     public Boolean userExistsByEmail(String email) {
-        return userRepository.existsByEmail(email);
+        return userRepository.existsByEmail(email.toLowerCase());
     }
 }

@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RegistrationForm from './components/RegistrationForm';
 import './App.css';
-import DataDisplay from "./DataDisplay";
+import DataDisplay from "./components/DataDisplay";
 
 function App() {
     return (
