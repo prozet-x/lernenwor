@@ -64,6 +64,11 @@ public class UserController {
         return ResponseEntity.created(location).body(user);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserData(@PathVariable("id") @NotBlank Long id) {
+        return null;
+    }
+
     @GetMapping("check-username-exists/{username}")
     public ResponseEntity<?> checkUserNameExists(@PathVariable("username") @NotBlank String username) {
         Map<String, Boolean> result = new HashMap<>();
