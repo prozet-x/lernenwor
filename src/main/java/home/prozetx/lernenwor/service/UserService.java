@@ -10,9 +10,12 @@ import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,5 +55,14 @@ public class UserService {
 
     public Boolean userExistsByEmail(String email) {
         return userRepository.existsByEmail(email.toLowerCase());
+    }
+
+    public User getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isEmpty()) {
+            throw new UsernameNotFoundException(String.format("User with id %d does not exist", id));
+            //NEED FIX. Need special exception
+        }
+        return user.get();
     }
 }

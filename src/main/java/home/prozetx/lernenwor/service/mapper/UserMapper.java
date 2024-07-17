@@ -1,5 +1,6 @@
 package home.prozetx.lernenwor.service.mapper;
 
+import home.prozetx.lernenwor.config.CustomUserDetails;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.user.UserCreation;
 import org.mapstruct.Mapper;
@@ -9,4 +10,5 @@ import org.mapstruct.factory.Mappers;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
     User userCreationToUser(UserCreation userCreation);
+    CustomUserDetails userToCustomUserDetails(User user);
 }

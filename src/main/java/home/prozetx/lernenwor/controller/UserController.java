@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -66,7 +67,9 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserData(@PathVariable("id") @NotBlank Long id) {
-        return null;
+        Map<String, Object> result = new HashMap<>();
+        result.put("user", userService.getUserById(id));
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("check-username-exists/{username}")

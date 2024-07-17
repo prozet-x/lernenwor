@@ -23,11 +23,12 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
-//                        .anyRequest().permitAll() //authenticated()
-                                .requestMatchers("/register", "/login", "/").permitAll()
-                                .anyRequest().authenticated()
+                        .anyRequest().permitAll() //authenticated()
+                                //.requestMatchers("/register", "/login", "/logout", "/users/**", "/").permitAll()
+                                //.anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(Customizer.withDefaults())
+                .userDetailsService(userDetailsService())
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
@@ -35,13 +36,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(userDetails);
+        return new CustomUserDetailsService();
     }
 
     @Bean

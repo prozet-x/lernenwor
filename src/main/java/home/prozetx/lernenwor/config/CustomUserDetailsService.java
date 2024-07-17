@@ -2,6 +2,7 @@ package home.prozetx.lernenwor.config;
 
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.repository.UserRepository;
+import home.prozetx.lernenwor.service.mapper.UserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (user.isEmpty()) {
             throw new UsernameNotFoundException(String.format("User with name %s does not exist", username));
         }
-        return null;
+        return UserMapper.INSTANCE.userToCustomUserDetails(user.get());
     }
 }
