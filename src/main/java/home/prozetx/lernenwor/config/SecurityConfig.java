@@ -25,8 +25,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
                         //.anyRequest().permitAll() //authenticated()
-                                .requestMatchers("/v1/users").permitAll()
-                                .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.POST, "/v1/users").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/users/check**").permitAll()
+                        .anyRequest().authenticated()
                 )
 //                .httpBasic(Customizer.withDefaults())
                 .userDetailsService(userDetailsService());
