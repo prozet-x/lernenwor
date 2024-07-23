@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         //.anyRequest().permitAll() //authenticated()
                         .requestMatchers(HttpMethod.POST, "/v1/users").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/v1/users/check**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/users", "/v1/users/check**").permitAll()
                         .anyRequest().authenticated()
                 )
 //                .httpBasic(Customizer.withDefaults())
