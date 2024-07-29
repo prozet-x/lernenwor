@@ -1,5 +1,6 @@
 package home.prozetx.lernenwor.service;
 
+import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
@@ -26,16 +27,16 @@ public class UserService {
     private final EmailConfirmTokenRepository emailConfirmTokenRepository;
 
     @Transactional
-    public User saveUser(UserCreation userCreation) {
-        if (userRepository.existsByName(userCreation.name())) {
-            log.info("Attempt to create a user with an existing name: " + userCreation);
-            throw new UserNameExists(userCreation.name());
+    public User saveUser(SignUp signUp) {
+        if (userRepository.existsByName(signUp.name())) {
+            log.info("Attempt to create a user with an existing name: " + signUp);
+            throw new UserNameExists(signUp.name());
         }
-        if (userRepository.existsByEmail(userCreation.email())) {
-            log.info("Attempt to create a user with an existing email: " + userCreation);
-            throw new UserEmailExists(userCreation.email());
+        if (userRepository.existsByEmail(signUp.email())) {
+            log.info("Attempt to create a user with an existing email: " + signUp);
+            throw new UserEmailExists(signUp.email());
         }
-        User user = UserMapper.INSTANCE.userCreationToUser(userCreation);
+        User user = UserMapper.INSTANCE.signUpToUser(signUp);
 
         user.setEmail(user.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
