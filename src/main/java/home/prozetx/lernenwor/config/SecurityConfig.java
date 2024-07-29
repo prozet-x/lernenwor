@@ -3,7 +3,11 @@ package home.prozetx.lernenwor.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -29,8 +33,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/v1/users", "/v1/users/check**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .authenticationProvider(authenticationProvider());
 //                .httpBasic(Customizer.withDefaults())
-                .userDetailsService(userDetailsService());
+//                .userDetailsService(userDetailsService());
 //                .formLogin(Customizer.withDefaults());
 
         return http.build();
@@ -44,5 +49,18 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
+        return daoAuthenticationProvider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
     }
 }

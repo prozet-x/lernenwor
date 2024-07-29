@@ -19,3 +19,7 @@ spring:
     username: postgres
     password: user1234
     driver-class-name: org.postgresql.Driver
+
+token:
+#  key: "bXlTdXBlclNlY3JldEtleQ=="
+  key: "My super secret key"

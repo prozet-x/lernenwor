@@ -1,4 +1,5 @@
-package home.prozetx.lernenwor.domain.user;
+package home.prozetx.lernenwor.domain.auth;
+
 
 import home.prozetx.lernenwor.domain.user.constraint.Password;
 import home.prozetx.lernenwor.domain.user.constraint.Username;
@@ -7,7 +8,7 @@ import jakarta.validation.constraints.Email;
 import lombok.ToString;
 
 @FieldsMatchConsiderCase(firstField = "password", secondField = "passwordConfirm", message = "Fields {firstField} and {secondField} must be equal")
-public record UserCreation(
+public record SignUp (
         @Username
         String name,
         @Email

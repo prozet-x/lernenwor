@@ -67,7 +67,8 @@ dependencies {
 			'org.liquibase:liquibase-core',
 			'com.querydsl:querydsl-jpa:5.0.0:jakarta',
 			'org.mapstruct:mapstruct:1.5.5.Final',
-			'org.postgresql:postgresql:42.7.3'
+			'org.postgresql:postgresql:42.7.3',
+			'io.jsonwebtoken:jjwt-api:0.12.6'
 
 	)
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -83,6 +84,11 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	runtimeOnly(
+			'io.jsonwebtoken:jjwt-impl:0.12.6',
+			'io.jsonwebtoken:jjwt-jackson:0.12.6'
+	)
 
 	liquibaseRuntime(
 			sourceSets.main.output,
