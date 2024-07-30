@@ -17,6 +17,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (user.isEmpty()) {
             throw new UsernameNotFoundException(String.format("User with name %s does not exist", username));
         }
-        return UserMapper.INSTANCE.userToCustomUserDetails(user.get());
+        return user.get();
     }
 }

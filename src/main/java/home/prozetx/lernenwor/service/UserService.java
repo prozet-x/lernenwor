@@ -2,7 +2,6 @@ package home.prozetx.lernenwor.service;
 
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
 import home.prozetx.lernenwor.exception.exceptions.UserEmailExists;
 import home.prozetx.lernenwor.exception.exceptions.UserNameExists;

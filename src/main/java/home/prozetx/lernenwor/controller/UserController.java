@@ -1,27 +1,15 @@
 package home.prozetx.lernenwor.controller;
 
-import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.domain.user.UserCreation;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -42,28 +30,28 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping
-    public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
-        Map<String, Object> result = new HashMap<>();
-        log.info(String.format("Attempt to register a new user: %s", userCreation));
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errors = bindingResult.getFieldErrors().stream()
-                    .filter(fieldError -> fieldError.getDefaultMessage() != null)
-                    .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage, (existingValue, newValue) -> existingValue));
-            result.put("errors", errors);
-            log.info("The attempt failed: " + errors);
-            return ResponseEntity.badRequest().body(result);
-        }
-
-        User user = userService.saveUser(userCreation);
-
-        URI location = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/{id}")
-                .buildAndExpand(user.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).body(user);
-    }
+//    @PostMapping
+//    public ResponseEntity<?> createNew(@RequestBody @Valid UserCreation userCreation , BindingResult bindingResult) {
+//        Map<String, Object> result = new HashMap<>();
+//        log.info(String.format("Attempt to register a new user: %s", userCreation));
+//        if (bindingResult.hasErrors()) {
+//            Map<String, String> errors = bindingResult.getFieldErrors().stream()
+//                    .filter(fieldError -> fieldError.getDefaultMessage() != null)
+//                    .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage, (existingValue, newValue) -> existingValue));
+//            result.put("errors", errors);
+//            log.info("The attempt failed: " + errors);
+//            return ResponseEntity.badRequest().body(result);
+//        }
+//
+//        User user = userService.saveUser(userCreation);
+//
+//        URI location = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/{id}")
+//                .buildAndExpand(user.getId())
+//                .toUri();
+//
+//        return ResponseEntity.created(location).body(user);
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserData(@PathVariable("id") @NotBlank Long id) {
