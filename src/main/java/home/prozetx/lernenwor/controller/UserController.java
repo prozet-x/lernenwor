@@ -60,14 +60,14 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("check-username-exists/{username}")
+    @GetMapping("/checks/check-user-name-exists/{username}")
     public ResponseEntity<?> checkUserNameExists(@PathVariable("username") @NotBlank String username) {
         Map<String, Boolean> result = new HashMap<>();
         result.put("username_exists", userService.userExistsByUsername(username));
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("check-user-email-exists/{email}")
+    @GetMapping("/checks/check-user-email-exists/{email}")
     public ResponseEntity<?> checkUserEmailExists(@PathVariable("email") @NotBlank String email) {
         Map<String, Boolean> result = new HashMap<>();
         result.put("user_email_exists", userService.userExistsByEmail(email));

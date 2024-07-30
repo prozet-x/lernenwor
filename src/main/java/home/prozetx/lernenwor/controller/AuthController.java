@@ -11,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -23,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("v1/auth")
 @AllArgsConstructor
 @Slf4j
 public class AuthController {
@@ -50,5 +47,10 @@ public class AuthController {
 //                .toUri();
 
         return ResponseEntity.ok(accessToken);
+    }
+
+    @GetMapping("/signup")
+    public ResponseEntity<Boolean> test() {
+        return ResponseEntity.ok(true);
     }
 }
