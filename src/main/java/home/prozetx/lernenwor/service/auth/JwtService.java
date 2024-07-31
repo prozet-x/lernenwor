@@ -1,8 +1,11 @@
 package home.prozetx.lernenwor.service.auth;
 
 import home.prozetx.lernenwor.domain.auth.AccessToken;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SecureDigestAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,7 @@ public class JwtService {
                         .issuedAt(new Date(System.currentTimeMillis()))
                         .expiration(new Date(System.currentTimeMillis() +  + accessTokenLifeTimeSeconds))
                         .subject(user.getUsername())
+                        //.signWith(Keys.hmacShaKeyFor(signKey.getBytes()), Jwts.SIG.HS256)
                         .signWith(Keys.hmacShaKeyFor(signKey.getBytes()))
                         .compact();
         return new AccessToken(token);

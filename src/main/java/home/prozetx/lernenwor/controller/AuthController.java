@@ -1,6 +1,7 @@
 package home.prozetx.lernenwor.controller;
 
 import home.prozetx.lernenwor.domain.auth.AccessToken;
+import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.service.auth.AuthService;
@@ -39,15 +40,14 @@ public class AuthController {
         }
 
         AccessToken accessToken = authService.signUp(signUp);
-
-
-//        URI location = ServletUriComponentsBuilder.fromCurrentContextPath()
-//                .path("/{id}")
-//                .buildAndExpand(user.getId())
-//                .toUri();
-
         return ResponseEntity.ok(accessToken);
     }
+
+    @PostMapping("/signin")
+    public ResponseEntity<?> signIn(@RequestBody SignIn signIn) {
+
+    }
+
 
     @GetMapping("/signup")
     public ResponseEntity<Boolean> test() {

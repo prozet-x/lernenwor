@@ -22,4 +22,4 @@ spring:
 
 token:
 #  key: "bXlTdXBlclNlY3JldEtleQ=="
-  key: "My super secret key"
+  key: "My super secret key. You will never crack it."

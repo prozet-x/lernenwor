@@ -4,9 +4,13 @@ import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.service.UserService;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class AuthService {
     private UserService userService;
     private JwtService jwtService;
