@@ -4,6 +4,7 @@ import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.AuthService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class AuthController {
     AuthService authService;
+    UserService userService;
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody @Valid SignUp signUp, BindingResult bindingResult) {
         Map<String, Object> result = new HashMap<>();
@@ -39,13 +41,13 @@ public class AuthController {
             return ResponseEntity.badRequest().body(result);
         }
 
-        AccessToken accessToken = authService.signUp(signUp);
-        return ResponseEntity.ok(accessToken);
+        userService.saveUser(signUp);
+        return ResponseEntity.ok().body(null);
     }
 
     @PostMapping("/signin")
     public ResponseEntity<?> signIn(@RequestBody SignIn signIn) {
-
+        return null;
     }
 
 
