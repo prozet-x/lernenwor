@@ -124,10 +124,10 @@ function RegistrationForm() {
                 throw new Error(errorData.errors || 'Failed to register.');
             }
 
-            const userData = await response.json();
+            //const userData = await response.json();
             //alert('Registration successful! You can now log in with your new credentials.');
             //navigate('/'); // Redirect to the home page or dashboard
-            //navigate('/', { state: { fromRegistration: true } });
+            navigate('/', { state: { fromRegistration: true } });
         } catch (error) {
             setErrorMessage(error.message);
         }
