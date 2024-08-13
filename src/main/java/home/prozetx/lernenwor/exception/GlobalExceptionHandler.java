@@ -1,8 +1,8 @@
 package home.prozetx.lernenwor.exception;
 
 import home.prozetx.lernenwor.exception.exceptions.EmailTokenNotFoundException;
-import home.prozetx.lernenwor.exception.exceptions.UserEmailExists;
-import home.prozetx.lernenwor.exception.exceptions.UserNameExists;
+import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
+import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,13 +13,13 @@ import static org.springframework.http.HttpStatus.CONFLICT;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(UserNameExists.class)
-    ResponseEntity<Map<String, Object>> handleUserNameExists(UserNameExists ex) {
+    @ExceptionHandler(UserNameExistsException.class)
+    ResponseEntity<Map<String, Object>> handleUserNameExists(UserNameExistsException ex) {
         return ResponseEntity.status(CONFLICT).body(Map.of("error", ex.getMessage()));
     }
 
-    @ExceptionHandler(UserEmailExists.class)
-    ResponseEntity<Map<String, Object>> handleUserEmailExists(UserEmailExists ex) {
+    @ExceptionHandler(UserEmailExistsException.class)
+    ResponseEntity<Map<String, Object>> handleUserEmailExists(UserEmailExistsException ex) {
         return ResponseEntity.status(CONFLICT).body(Map.of("error", ex.getMessage()));
     }
 

@@ -2,6 +2,7 @@ package home.prozetx.lernenwor.domain.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -42,11 +43,15 @@ public class User implements UserDetails {
     private String password;
 
     @Column(columnDefinition = "boolean default false")
+    @NotNull
     private boolean confirmed;
+
+    @NotNull
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override

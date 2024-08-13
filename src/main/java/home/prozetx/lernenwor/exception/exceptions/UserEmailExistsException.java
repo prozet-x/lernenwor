@@ -1,7 +1,7 @@
 package home.prozetx.lernenwor.exception.exceptions;
 
-public class UserEmailExists extends RuntimeException {
-    public UserEmailExists(String userEmail) {
+public class UserEmailExistsException extends RuntimeException {
+    public UserEmailExistsException(String userEmail) {
         super("User with email " + userEmail + " already exists");
     }
 }

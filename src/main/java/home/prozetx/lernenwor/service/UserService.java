@@ -1,13 +1,13 @@
 package home.prozetx.lernenwor.service;
 
 import home.prozetx.lernenwor.domain.auth.SignUp;
+import home.prozetx.lernenwor.domain.user.Role;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
-import home.prozetx.lernenwor.exception.exceptions.UserEmailExists;
-import home.prozetx.lernenwor.exception.exceptions.UserNameExists;
+import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
+import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
-import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,16 +29,24 @@ public class UserService {
     public User saveUser(SignUp signUp) {
         if (userRepository.existsByName(signUp.name())) {
             log.info("Attempt to create a user with an existing name: " + signUp);
-            throw new UserNameExists(signUp.name());
+            throw new UserNameExistsException(signUp.name());
         }
         if (userRepository.existsByEmail(signUp.email())) {
             log.info("Attempt to create a user with an existing email: " + signUp);
-            throw new UserEmailExists(signUp.email());
+            throw new UserEmailExistsException(signUp.email());
         }
-        User user = UserMapper.INSTANCE.signUpToUser(signUp);
+//        User user = UserMapper.INSTANCE.signUpToUser(signUp);
 
-        user.setEmail(user.getEmail().toLowerCase());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User user = User.builder()
+                .name(signUp.name())
+                .email(signUp.email().toLowerCase())
+                .password(passwordEncoder.encode(signUp.password()))
+                .confirmed(false)
+                .role(Role.ROLE_USER)
+                .build();
+
+//        user.setEmail(user.getEmail().toLowerCase());
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         log.info("The new user " + user + " has been successfully saved");
 
