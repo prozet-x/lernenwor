@@ -3,7 +3,9 @@ package home.prozetx.lernenwor.exception;
 import home.prozetx.lernenwor.exception.exceptions.EmailTokenNotFoundException;
 import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
 import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
+import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.Map;
@@ -28,5 +30,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(BAD_REQUEST).body(Map.of("error", ex.getMessage()));
     }
 
-//    @ExceptionHandler()
+    @ExceptionHandler(UserNotFoundException.class)
+    ResponseEntity<Map<String, Object>> handle(UserNotFoundException ex) {
+        return ResponseEntity.status(BAD_REQUEST).body(Map.of("error", ex.getMessage()));
+    }
 }

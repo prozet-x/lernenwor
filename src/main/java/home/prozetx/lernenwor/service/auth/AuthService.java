@@ -4,6 +4,7 @@ import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class AuthService {
     public AccessToken signIn(SignIn signIn) {
         Optional<User> user = userRepository.findByName(signIn.getName());
         if (user.isEmpty()) {
-            throw new UsernameNotFoundException("The user was not found");
+            throw new UserNotFoundException();
         }
         return jwtService.generateToken(user.get());
     }

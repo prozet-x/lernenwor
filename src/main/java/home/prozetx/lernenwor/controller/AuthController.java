@@ -47,7 +47,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> signIn(@RequestBody SignIn signIn) {
-        return null;
+        return ResponseEntity.ok().body(authService.signIn(signIn));
     }
 
 
