@@ -8,6 +8,7 @@ import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
 import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
+import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,7 +36,7 @@ public class UserService {
             log.info("Attempt to create a user with an existing email: " + signUp);
             throw new UserEmailExistsException(signUp.email());
         }
-//        User user = UserMapper.INSTANCE.signUpToUser(signUp);
+        //User user = UserMapper.INSTANCE.signUpToUser(signUp);
 
         User user = User.builder()
                 .name(signUp.name())

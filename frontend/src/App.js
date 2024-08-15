@@ -4,6 +4,7 @@ import RegistrationForm from './components/RegistrationForm';
 import './App.css';
 import DataDisplay from "./components/DataDisplay";
 import UserDetail from "./components/UserDetail";
+import LoginPage from "./components/LoginPage";
 
 function App() {
     return (
@@ -11,8 +12,9 @@ function App() {
             <div>
                 <Routes>
                     <Route path="/" element={<DataDisplay />} />
-                    <Route path="/register" element={<RegistrationForm />} />
+                    <Route path="/signup" element={<RegistrationForm />} />
                     <Route path="/users/:id" element={<UserDetail />} />
+                    <Route path="/signin" element={<LoginPage />} />
                 </Routes>
             </div>
         </Router>

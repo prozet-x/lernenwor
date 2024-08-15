@@ -1,23 +1,23 @@
 databaseChangeLog:
 - changeSet:
-    id: 1716222322887-1
-    author: dima (generated)
+    id: 1723707836734-1
+    author: prozex (generated)
     changes:
     - createSequence:
         incrementBy: 1
         sequenceName: email_confirm_token_id_seq
         startValue: 1
 - changeSet:
-    id: 1716222322887-2
-    author: dima (generated)
+    id: 1723707836734-2
+    author: prozex (generated)
     changes:
     - createSequence:
         incrementBy: 1
         sequenceName: user_id_seq
         startValue: 1
 - changeSet:
-    id: 1716222322887-3
-    author: dima (generated)
+    id: 1723707836734-3
+    author: prozex (generated)
     changes:
     - createTable:
         columns:
@@ -36,8 +36,8 @@ databaseChangeLog:
             type: BIGINT
         tableName: email_confirm_token
 - changeSet:
-    id: 1716222322887-4
-    author: dima (generated)
+    id: 1723707836734-4
+    author: prozex (generated)
     changes:
     - createTable:
         columns:
@@ -61,10 +61,13 @@ databaseChangeLog:
         - column:
             name: password
             type: VARCHAR(255)
+        - column:
+            name: role
+            type: SMALLINT
         tableName: users
 - changeSet:
-    id: 1716222322887-5
-    author: dima (generated)
+    id: 1723707836734-5
+    author: prozex (generated)
     changes:
     - addForeignKeyConstraint:
         baseColumnNames: user_id

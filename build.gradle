@@ -98,7 +98,8 @@ dependencies {
 			'org.postgresql:postgresql:42.7.3',
 			'org.liquibase.ext:liquibase-hibernate6:4.21.1',
 			'org.springframework.boot:spring-boot-starter-data-jpa',
-			'org.springframework.boot:spring-boot-starter'
+			'org.springframework.boot:spring-boot-starter',
+			'org.springframework.boot:spring-boot-starter-security'
 	)
 }
 

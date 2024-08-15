@@ -6,6 +6,7 @@ import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.AuthService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -46,13 +47,8 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<?> signIn(@RequestBody SignIn signIn) {
+    public ResponseEntity<?> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
+
         return ResponseEntity.ok().body(authService.signIn(signIn));
-    }
-
-
-    @GetMapping("/signup")
-    public ResponseEntity<Boolean> test() {
-        return ResponseEntity.ok(true);
     }
 }
