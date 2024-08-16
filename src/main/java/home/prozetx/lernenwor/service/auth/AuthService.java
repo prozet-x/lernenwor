@@ -2,15 +2,11 @@ package home.prozetx.lernenwor.service.auth;
 
 import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
-import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,7 +22,7 @@ public class AuthService {
         if (user.isEmpty()) {
             throw new UserNotFoundException();
         }
-        return jwtService.generateToken(user.get());
+        return jwtService.generateAccessToken(user.get());
     }
 
 }
