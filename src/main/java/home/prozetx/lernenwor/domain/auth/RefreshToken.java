@@ -1,11 +1,10 @@
 package home.prozetx.lernenwor.domain.auth;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class AccessToken {
+public class RefreshToken {
     private String token;
 }

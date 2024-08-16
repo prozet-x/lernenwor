@@ -47,8 +47,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<?> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
-
+    public ResponseEntity<?> signIn(@RequestBody SignIn signIn) {
         return ResponseEntity.ok().body(authService.signIn(signIn));
     }
 }
