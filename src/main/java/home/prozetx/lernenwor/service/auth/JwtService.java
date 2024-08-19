@@ -2,6 +2,7 @@ package home.prozetx.lernenwor.service.auth;
 
 import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.RefreshToken;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,5 +41,21 @@ public class JwtService {
                 .signWith(Keys.hmacShaKeyFor(signKey.getBytes()))
                 .compact();
         return new RefreshToken(token);
+    }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(signKey.getBytes()))
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+    }
+
+    private String getUsername(Claims claims) {
+        return claims.getSubject();
+    }
+
+    public boolean isTokenValid(String token) {
+        return true;
     }
 }
