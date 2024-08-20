@@ -74,4 +74,13 @@ public class UserService {
         }
         return user.get();
     }
+
+    public User getUserByName(String name) {
+        Optional<User> user = userRepository.findByName(name);
+        if (user.isEmpty()) {
+            throw new UsernameNotFoundException(String.format("User with name %s does not exist", name));
+            //NEED FIX. Need special exception
+        }
+        return user.get();
+    }
 }

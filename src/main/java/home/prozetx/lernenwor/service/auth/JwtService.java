@@ -43,7 +43,7 @@ public class JwtService {
         return new RefreshToken(token);
     }
 
-    private Claims extractAllClaims(String token) {
+    public Claims extractAllClaims(String token) {
         return Jwts.parser()
                 .verifyWith(Keys.hmacShaKeyFor(signKey.getBytes()))
                 .build()
@@ -51,11 +51,11 @@ public class JwtService {
                 .getPayload();
     }
 
-    private String getUsername(Claims claims) {
+    public String getUsername(Claims claims) {
         return claims.getSubject();
     }
 
-    public boolean isTokenValid(String token) {
-        return true;
+    public boolean isTokenExpired(Claims claims) {
+        return !claims.getExpiration().before(new Date());
     }
 }
