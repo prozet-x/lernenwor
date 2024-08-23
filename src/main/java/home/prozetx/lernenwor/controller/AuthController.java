@@ -30,7 +30,6 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody @Valid SignUp signUp, BindingResult bindingResult) {
         Map<String, Object> result = new HashMap<>();
-        log.info(String.format("Attempt to register a new user: %s", signUp));
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = bindingResult.getFieldErrors().stream()
                     .filter(fieldError -> fieldError.getDefaultMessage() != null)
@@ -40,7 +39,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(result);
         }
 
-        userService.saveUser(signUp);
+        authService.signUp(signUp);
         return ResponseEntity.ok().body(null);
     }
 

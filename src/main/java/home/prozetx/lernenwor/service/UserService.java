@@ -23,39 +23,16 @@ import java.util.Optional;
 @Slf4j
 public class UserService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
     private final EmailConfirmTokenRepository emailConfirmTokenRepository;
 
     @Transactional
-    public User saveUser(SignUp signUp) {
-        if (userRepository.existsByName(signUp.name())) {
-            log.info("Attempt to create a user with an existing name: " + signUp);
-            throw new UserNameExistsException(signUp.name());
-        }
-        if (userRepository.existsByEmail(signUp.email())) {
-            log.info("Attempt to create a user with an existing email: " + signUp);
-            throw new UserEmailExistsException(signUp.email());
-        }
-        //User user = UserMapper.INSTANCE.signUpToUser(signUp);
-
-        User user = User.builder()
-                .name(signUp.name())
-                .email(signUp.email().toLowerCase())
-                .password(passwordEncoder.encode(signUp.password()))
-                .confirmed(false)
-                .role(Role.ROLE_USER)
-                .build();
-
-//        user.setEmail(user.getEmail().toLowerCase());
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User savedUser = userRepository.save(user);
+    public void saveUser(User user) {
+        userRepository.save(user);
         log.info("The new user " + user + " has been successfully saved");
 
         var userConfirmToken = new EmailConfirmToken(user);
         emailConfirmTokenRepository.save(userConfirmToken);
         log.info("The new user confirm token has been successfully saved. Token " + userConfirmToken);
-
-        return savedUser;
     }
 
     public Boolean userExistsByUsername(String username) {
