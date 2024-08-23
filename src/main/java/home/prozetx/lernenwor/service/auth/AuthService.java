@@ -1,6 +1,5 @@
 package home.prozetx.lernenwor.service.auth;
 
-import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
@@ -19,17 +18,20 @@ public class AuthService {
     private UserService userService;
     private UserRepository userRepository;
     private JwtService jwtService;
-    public Map<String, String> signIn(SignIn signIn) {
-        Optional<User> foundedUser = userRepository.findByName(signIn.getName());
-        if (foundedUser.isEmpty()) {
-            throw new UserNotFoundException();
-        }
 
-        User user = foundedUser.get();
+    public Map<String, String> getAccessAndRefreshTokens(SignIn signIn) {
+        User user = getUserBySignIn(signIn);
         Map<String, String> tokens = new HashMap<>();
         tokens.put("accessToken", jwtService.generateAccessToken(user).getToken());
         tokens.put("refreshToken", jwtService.generateRefreshToken(user).getToken());
         return tokens;
     }
 
+    private User getUserBySignIn(SignIn signIn) {
+        Optional<User> foundedUser = userRepository.findByName(signIn.getName());
+        if (foundedUser.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        return foundedUser.get();
+    }
 }
