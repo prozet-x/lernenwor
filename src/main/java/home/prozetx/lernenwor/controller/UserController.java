@@ -60,6 +60,11 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/protected")
+    public ResponseEntity<?> getProtectedResource() {
+        return ResponseEntity.ok(Map.of("response", "protected"));
+    }
+
     @GetMapping("/checks/check-user-name-exists/{username}")
     public ResponseEntity<?> checkUserNameExists(@PathVariable("username") @NotBlank String username) {
         Map<String, Boolean> result = new HashMap<>();
