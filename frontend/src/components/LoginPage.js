@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const [name, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -15,10 +17,10 @@ const LoginPage = () => {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
 
-            // Перенаправление на защищенную страницу
-            // window.location.href = '/';
+            // Redirect to the main page with success message
+            navigate('/', { state: { fromLogin: true } });
         } catch (error) {
-            setErrorMessage('Неверное имя пользователя или пароль');
+            setErrorMessage('Incorrect username or password');
         }
     };
 
