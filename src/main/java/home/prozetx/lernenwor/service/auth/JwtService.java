@@ -56,6 +56,6 @@ public class JwtService {
     }
 
     public boolean isTokenExpired(Claims claims) {
-        return !claims.getExpiration().before(new Date());
+        return claims.getExpiration().before(new Date());
     }
 }

@@ -33,9 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String token = authHeader.substring(AUTH_HEADER_PREFIX.length());
         Claims claims = jwtService.extractAllClaims(token);
-        System.out.println(claims.toString());
         if (!jwtService.isTokenExpired(claims)) {
-            System.out.println("Token did not expire");
             String username = jwtService.getUsername(claims);
             User user = userService.getUserByName(username);
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
