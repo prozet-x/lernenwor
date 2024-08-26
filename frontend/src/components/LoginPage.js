@@ -15,7 +15,7 @@ const LoginPage = () => {
             const { accessToken, refreshToken } = response.data;
 
             localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('refreshToken', refreshToken);
+            //localStorage.setItem('refreshToken', refreshToken);
 
             // Redirect to the main page with success message
             navigate('/', { state: { fromLogin: true } });

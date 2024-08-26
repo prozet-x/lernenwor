@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import useAuth from '../hooks/useAuth';
 
 const ProtectedResource = () => {
+    const { fetchWithAuth } = useAuth();
     const [response, setResponse] = useState('');
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchProtectedResource = async () => {
-            const token = localStorage.getItem('accessToken');
-            if (!token) {
-                setError('Access token not found');
-                return;
-            }
-
+        const fetchResource = async () => {
             try {
-                const res = await fetch('/api/v1/users/protected', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-
+                const res = await fetchWithAuth('/api/v1/users/protected');
                 if (res.ok) {
                     const data = await res.json();
                     setResponse(data.response);
@@ -32,8 +21,8 @@ const ProtectedResource = () => {
             }
         };
 
-        fetchProtectedResource();
-    }, []);
+        fetchResource();
+    }, [fetchWithAuth]);
 
     return (
         <div>

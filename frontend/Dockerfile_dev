@@ -11,5 +11,6 @@ COPY ./public/ ./public
 
 RUN npm install --silent
 RUN npm install react-router-dom --silent
+RUN npm install jwt-decode --silent
 
 CMD ["npm", "start"]
