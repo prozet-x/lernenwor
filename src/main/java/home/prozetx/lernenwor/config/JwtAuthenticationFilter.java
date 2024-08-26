@@ -16,11 +16,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
+import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_NAME;
+import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_PREFIX;
+
 @Component
 @AllArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private static final String AUTH_HEADER_NAME = "Authorization";
-    private static final String AUTH_HEADER_PREFIX = "Bearer ";
     private JwtService jwtService;
     private UserService userService;
     @Override

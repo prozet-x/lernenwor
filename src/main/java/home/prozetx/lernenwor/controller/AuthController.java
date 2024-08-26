@@ -1,11 +1,15 @@
 package home.prozetx.lernenwor.controller;
 
+import home.prozetx.lernenwor.domain.auth.AccessToken;
+import home.prozetx.lernenwor.domain.auth.RefreshToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.JwtService;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -15,9 +19,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_NAME;
+import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_PREFIX;
 
 @RestController
 @RequestMapping("v1/auth")
@@ -53,5 +61,27 @@ public class AuthController {
         response.addCookie(refreshTokenCookie);
 
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
+    }
+
+    @GetMapping("/getNewAccessToken")
+    public ResponseEntity<Map<String, AccessToken>> getNewAccessToken(HttpServletRequest request) {
+        String refreshToken = Arrays.stream(request.getCookies())
+                .filter(cookie -> cookie.getName().equals("refreshToken"))
+                .findFirst()
+                .map(Cookie::getValue)
+                .orElse(null);
+
+        if (refreshToken == null) {
+            //NEED FIX
+            //Should throw a particular exception
+        }
+
+        Claims claims = jwtService.extractAllClaims(refreshToken);
+        if (!jwtService.isTokenExpired(claims)) {
+            //NEED FIX
+            //Should throw a particular exception
+        }
+
+        return AuthService.getNewAccessToken(refreshToken);
     }
 }

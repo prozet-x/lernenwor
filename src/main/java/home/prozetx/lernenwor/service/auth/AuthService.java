@@ -1,10 +1,11 @@
 package home.prozetx.lernenwor.service.auth;
 
+import home.prozetx.lernenwor.domain.auth.AccessToken;
+import home.prozetx.lernenwor.domain.auth.RefreshToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.Role;
 import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
 import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
 import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
 import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
@@ -23,8 +24,11 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class AuthService {
+    public static final String AUTH_HEADER_NAME = "Authorization";
+    public static final String AUTH_HEADER_PREFIX = "Bearer ";
+
     private UserService userService;
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
     private JwtService jwtService;
 
@@ -32,7 +36,7 @@ public class AuthService {
         User user = getUserBySignIn(signIn);
         Map<String, String> tokens = new HashMap<>();
         tokens.put("accessToken", jwtService.generateAccessToken(user).getToken());
-        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getToken());
+        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getRefreshToken());
         return tokens;
     }
 
@@ -54,6 +58,10 @@ public class AuthService {
                 .build();
 
         userService.saveUser(user);
+    }
+
+    public AccessToken getNewAccessToken(RefreshToken refreshToken) {
+        if (jwtService.isTokenExpired())
     }
 
     private User getUserBySignIn(SignIn signIn) {
