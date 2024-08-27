@@ -21,13 +21,16 @@ import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_PREFIX
 
 @Component
 @AllArgsConstructor
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
     private JwtService jwtService;
     private UserService userService;
+    private FilterUtils filterUtils;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        System.out.println("Access filter. Entered");
         String authHeader = request.getHeader(AUTH_HEADER_NAME);
         if (authHeader == null || !authHeader.startsWith(AUTH_HEADER_PREFIX)) {
+            System.out.println("Access filter. Auth header not found");
             filterChain.doFilter(request, response);
             return;
         }
@@ -35,14 +38,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = authHeader.substring(AUTH_HEADER_PREFIX.length());
         Claims claims = jwtService.extractAllClaims(token);
         if (!jwtService.isTokenExpired(claims)) {
-            String username = jwtService.getUsername(claims);
-            User user = userService.getUserByName(username);
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
-            SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
-            securityContext.setAuthentication(authToken);
-            SecurityContextHolder.setContext(securityContext);
+            System.out.println("Access filter. Expired");
+            filterUtils.authenticateUser(claims);
         }
 
+        System.out.println("Access filter. All good");
         filterChain.doFilter(request, response);
     }
 }

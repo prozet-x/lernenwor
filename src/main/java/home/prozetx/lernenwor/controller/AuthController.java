@@ -52,19 +52,14 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<?> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
+    public ResponseEntity<Map<String, ?>> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
         Map<String , ?> tokens = authService.getAccessAndRefreshTokens(signIn);
-
-        Cookie refreshTokenCookie = new Cookie("refreshToken", tokens.get("refreshToken").toString());
-        refreshTokenCookie.setHttpOnly(true);
-        refreshTokenCookie.setPath("/api/");
-        response.addCookie(refreshTokenCookie);
-
+        addRefreshTokenToResponseAsCookie(response, tokens);
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
     }
 
-    @GetMapping("/getNewAccessToken")
-    public ResponseEntity<Map<String, AccessToken>> getNewAccessToken(HttpServletRequest request) {
+    @GetMapping("/updateTokens")
+    public ResponseEntity<Map<String, ?>> getNewAccessToken(HttpServletRequest request, HttpServletResponse response) {
         String refreshToken = Arrays.stream(request.getCookies())
                 .filter(cookie -> cookie.getName().equals("refreshToken"))
                 .findFirst()
@@ -76,12 +71,15 @@ public class AuthController {
             //Should throw a particular exception
         }
 
-        Claims claims = jwtService.extractAllClaims(refreshToken);
-        if (!jwtService.isTokenExpired(claims)) {
-            //NEED FIX
-            //Should throw a particular exception
-        }
+        Map<String, ?> tokens = authService.getAccessAndRefreshTokens(refreshToken);
+        addRefreshTokenToResponseAsCookie(response, tokens);
+        return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
+    }
 
-        return AuthService.getNewAccessToken(refreshToken);
+    private void addRefreshTokenToResponseAsCookie(HttpServletResponse response, Map<String, ?> tokens) {
+        Cookie refreshTokenCookie = new Cookie("refreshToken", tokens.get("refreshToken").toString());
+        refreshTokenCookie.setHttpOnly(true);
+        refreshTokenCookie.setPath("/api/");
+        response.addCookie(refreshTokenCookie);
     }
 }

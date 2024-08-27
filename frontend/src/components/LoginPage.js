@@ -12,7 +12,7 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const response = await axios.post('/api/v1/auth/signin', { name, password });
-            const { accessToken, refreshToken } = response.data;
+            const { accessToken } = response.data;
 
             localStorage.setItem('accessToken', accessToken);
             //localStorage.setItem('refreshToken', refreshToken);

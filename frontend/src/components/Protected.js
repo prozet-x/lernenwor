@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 
 const ProtectedResource = () => {
-    const { fetchWithAuth } = useAuth();
+    const { fetchWithAuth, loading, error: authError } = useAuth();
     const [response, setResponse] = useState('');
     const [error, setError] = useState(null);
 
@@ -21,12 +21,20 @@ const ProtectedResource = () => {
             }
         };
 
-        fetchResource();
-    }, [fetchWithAuth]);
+        if (!loading) {
+            fetchResource();
+        }
+    }, [fetchWithAuth, loading]);
+
+    if (loading) {
+        return <p>Loading...</p>; // Пока идёт инициализация
+    }
 
     return (
         <div>
-            {error ? (
+            {authError ? (
+                <p>Error: {authError}</p>
+            ) : error ? (
                 <p>Error: {error}</p>
             ) : (
                 <p>{response}</p>

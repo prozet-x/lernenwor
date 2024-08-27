@@ -15,8 +15,8 @@ import java.util.Date;
 public class JwtService {
     @Value("${token.key}")
     private String signKey;
-    private static final int accessTokenLifeTimeSeconds = 5 * 60 * 1000; // 5 min
-    private static final int refreshTokenLifeTimeSeconds = 15 * 60 * 1000; // 15 min
+    private static final int accessTokenLifeTimeSeconds = 30 * 1000; // 30 sec
+    private static final int refreshTokenLifeTimeSeconds = 5 * 60 * 1000; // 5 min
 
     public AccessToken generateAccessToken(UserDetails user) {
 //        Map<String, Object> claims = new HashMap<>();

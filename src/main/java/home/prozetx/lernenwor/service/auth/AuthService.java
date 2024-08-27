@@ -11,6 +11,8 @@ import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
 import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -60,8 +62,18 @@ public class AuthService {
         userService.saveUser(user);
     }
 
-    public AccessToken getNewAccessToken(RefreshToken refreshToken) {
-        if (jwtService.isTokenExpired())
+    public Map<String, String> getAccessAndRefreshTokens(String refreshToken) {
+        Claims claims = jwtService.extractAllClaims(refreshToken);
+        if (jwtService.isTokenExpired(claims)) {
+            //NEED FIX
+            //Should throw a particular exception
+        }
+        String username = jwtService.getUsername(claims);
+        User user = userService.getUserByName(username);
+        Map<String, String> tokens = new HashMap<>();
+        tokens.put("accessToken", jwtService.generateAccessToken(user).getToken());
+        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getRefreshToken());
+        return tokens;
     }
 
     private User getUserBySignIn(SignIn signIn) {

@@ -1,22 +1,67 @@
-import { useState, useEffect } from 'react';
-import { isTokenExpired } from '../utils/tokenUtils'; // Импорт функции из tokenUtils.js
+import { useState, useEffect, useCallback } from 'react';
+import { isTokenExpired } from '../utils/tokenUtils';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const useAuth = () => {
     const [accessToken, setAccessToken] = useState(localStorage.getItem('accessToken'));
+    const [loading, setLoading] = useState(true); // Изначально ставим загрузку в true
+    const [error, setError] = useState(null);
+    const [tokenRefreshing, setTokenRefreshing] = useState(false);
+    const [refreshTokenPromise, setRefreshTokenPromise] = useState(null);
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (isTokenExpired(accessToken)) {
-            // Здесь можно вызвать функцию обновления токена, если у вас есть refresh-токен
-            // refreshAccessToken().then(newToken => setAccessToken(newToken));
+    const updateTokens = useCallback(async () => {
+        setTokenRefreshing(true);
+        try {
+            const response = await axios.get('/api/v1/auth/updateTokens');
+            const newAccessToken = response.data.accessToken;
+            localStorage.setItem('accessToken', newAccessToken);
+            setAccessToken(newAccessToken);
+            setError(null);
+        } catch (err) {
+            console.error('Failed to refresh tokens', err);
             setAccessToken(null);
             localStorage.removeItem('accessToken');
+            setError('Failed to refresh tokens');
+            navigate('/signin');
+        } finally {
+            setTokenRefreshing(false);
+            setRefreshTokenPromise(null);
         }
-    }, [accessToken]);
+    }, [navigate]);
+
+    useEffect(() => {
+        const initializeAuth = async () => {
+            if (!accessToken || isTokenExpired(accessToken)) {
+                if (!refreshTokenPromise) {
+                    const promise = updateTokens();
+                    setRefreshTokenPromise(promise);
+                    await promise;
+                } else {
+                    await refreshTokenPromise;
+                }
+            }
+            setLoading(false); // Отключаем загрузку после инициализации
+        };
+        initializeAuth();
+    }, [accessToken, refreshTokenPromise, updateTokens]);
 
     const fetchWithAuth = async (url, options = {}) => {
+        if (tokenRefreshing) {
+            await refreshTokenPromise;
+        }
+
         if (!accessToken || isTokenExpired(accessToken)) {
-            setAccessToken(null);
-            throw new Error('Access token is expired or missing');
+            if (!refreshTokenPromise) {
+                await updateTokens();
+            } else {
+                await refreshTokenPromise;
+            }
+
+            if (!accessToken) {
+                throw new Error('Access token is expired or missing');
+            }
         }
 
         const response = await fetch(url, {
@@ -30,7 +75,7 @@ const useAuth = () => {
         return response;
     };
 
-    return { accessToken, fetchWithAuth };
+    return { accessToken, fetchWithAuth, error, loading };
 };
 
 export default useAuth;
