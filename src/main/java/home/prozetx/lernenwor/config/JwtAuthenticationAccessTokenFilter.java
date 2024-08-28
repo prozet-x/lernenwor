@@ -27,10 +27,8 @@ public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
     private FilterUtils filterUtils;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("Access filter. Entered");
         String authHeader = request.getHeader(AUTH_HEADER_NAME);
         if (authHeader == null || !authHeader.startsWith(AUTH_HEADER_PREFIX)) {
-            System.out.println("Access filter. Auth header not found");
             filterChain.doFilter(request, response);
             return;
         }
@@ -38,11 +36,9 @@ public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
         String token = authHeader.substring(AUTH_HEADER_PREFIX.length());
         Claims claims = jwtService.extractAllClaims(token);
         if (!jwtService.isTokenExpired(claims)) {
-            System.out.println("Access filter. Expired");
             filterUtils.authenticateUser(claims);
         }
 
-        System.out.println("Access filter. All good");
         filterChain.doFilter(request, response);
     }
 }
