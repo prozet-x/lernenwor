@@ -13,6 +13,8 @@ import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -62,6 +64,10 @@ public class AuthService {
         userService.saveUser(user);
     }
 
+    public void signOut(HttpServletResponse response) {
+
+    }
+
     public Map<String, String> getAccessAndRefreshTokens(String refreshToken) {
         Claims claims = jwtService.extractAllClaims(refreshToken);
         if (jwtService.isTokenExpired(claims)) {
@@ -82,5 +88,21 @@ public class AuthService {
             throw new UserNotFoundException();
         }
         return foundedUser.get();
+    }
+
+    public void setExpiredRefreshTokenToResponse(HttpServletResponse response) {
+        RefreshToken refreshToken = jwtService.generateExpiredEmptyRefreshToken();
+        Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken.getRefreshToken());
+        refreshTokenCookie.setHttpOnly(true);
+        refreshTokenCookie.setPath("/api/");
+        refreshTokenCookie.setMaxAge(0);
+        response.addCookie(refreshTokenCookie);
+    }
+
+    public void addRefreshTokenToResponseAsCookie(HttpServletResponse response, String refreshToken) {
+        Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
+        refreshTokenCookie.setHttpOnly(true);
+        refreshTokenCookie.setPath("/api/");
+        response.addCookie(refreshTokenCookie);
     }
 }

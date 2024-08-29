@@ -36,8 +36,17 @@ public class JwtService {
     public RefreshToken generateRefreshToken(UserDetails user) {
         String token = Jwts.builder()
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + +refreshTokenLifeTimeSeconds))
+                .expiration(new Date(System.currentTimeMillis() + refreshTokenLifeTimeSeconds))
                 .subject(user.getUsername())
+                .signWith(Keys.hmacShaKeyFor(signKey.getBytes()))
+                .compact();
+        return new RefreshToken(token);
+    }
+
+    public RefreshToken generateExpiredEmptyRefreshToken() {
+        String token = Jwts.builder()
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() - refreshTokenLifeTimeSeconds))
                 .signWith(Keys.hmacShaKeyFor(signKey.getBytes()))
                 .compact();
         return new RefreshToken(token);

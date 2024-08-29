@@ -54,8 +54,14 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<Map<String, ?>> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
         Map<String , ?> tokens = authService.getAccessAndRefreshTokens(signIn);
-        addRefreshTokenToResponseAsCookie(response, tokens);
+        authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
+    }
+
+    @PostMapping("/signout")
+    public ResponseEntity<?> signOut(HttpServletResponse response) {
+        authService.setExpiredRefreshTokenToResponse(response);
+        return ResponseEntity.ok().body(null);
     }
 
     @GetMapping("/updateTokens")
@@ -72,14 +78,7 @@ public class AuthController {
         }
 
         Map<String, ?> tokens = authService.getAccessAndRefreshTokens(refreshToken);
-        addRefreshTokenToResponseAsCookie(response, tokens);
+        authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
-    }
-
-    private void addRefreshTokenToResponseAsCookie(HttpServletResponse response, Map<String, ?> tokens) {
-        Cookie refreshTokenCookie = new Cookie("refreshToken", tokens.get("refreshToken").toString());
-        refreshTokenCookie.setHttpOnly(true);
-        refreshTokenCookie.setPath("/api/");
-        response.addCookie(refreshTokenCookie);
     }
 }
