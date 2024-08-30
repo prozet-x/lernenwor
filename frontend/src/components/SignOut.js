@@ -1,8 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signout = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
@@ -15,7 +15,7 @@ const Signout = () => {
             if (response.ok) {
                 localStorage.removeItem('accessToken');
                 // Перенаправляем пользователя на страницу логина
-                history.push('/signin');
+                navigate('/signin');
             } else {
                 console.error('Failed to log out');
             }
