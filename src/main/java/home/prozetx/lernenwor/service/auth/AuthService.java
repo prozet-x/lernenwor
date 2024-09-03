@@ -1,6 +1,5 @@
 package home.prozetx.lernenwor.service.auth;
 
-import home.prozetx.lernenwor.domain.auth.AccessToken;
 import home.prozetx.lernenwor.domain.auth.RefreshToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
@@ -12,7 +11,6 @@ import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -36,7 +34,7 @@ public class AuthService {
     private UserRepository userRepository;
     private JwtService jwtService;
 
-    public Map<String, String> getAccessAndRefreshTokens(SignIn signIn) {
+    public Map<String, String> emitNewAccessAndRefreshTokens(SignIn signIn) {
         User user = getUserBySignIn(signIn);
         Map<String, String> tokens = new HashMap<>();
         tokens.put("accessToken", jwtService.generateAccessToken(user).getToken());
@@ -68,7 +66,7 @@ public class AuthService {
 
     }
 
-    public Map<String, String> getAccessAndRefreshTokens(String refreshToken) {
+    public Map<String, String> emitNewAccessAndRefreshTokens(String refreshToken) {
         Claims claims = jwtService.extractAllClaims(refreshToken);
         if (jwtService.isTokenExpired(claims)) {
             //NEED FIX

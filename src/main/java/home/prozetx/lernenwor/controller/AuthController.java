@@ -1,13 +1,10 @@
 package home.prozetx.lernenwor.controller;
 
-import home.prozetx.lernenwor.domain.auth.AccessToken;
-import home.prozetx.lernenwor.domain.auth.RefreshToken;
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.JwtService;
-import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,9 +20,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_NAME;
-import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_PREFIX;
 
 @RestController
 @RequestMapping("v1/auth")
@@ -53,7 +47,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<Map<String, ?>> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
-        Map<String , ?> tokens = authService.getAccessAndRefreshTokens(signIn);
+        Map<String , ?> tokens = authService.emitNewAccessAndRefreshTokens(signIn);
         authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
     }
@@ -77,7 +71,7 @@ public class AuthController {
             //Should throw a particular exception
         }
 
-        Map<String, ?> tokens = authService.getAccessAndRefreshTokens(refreshToken);
+        Map<String, ?> tokens = authService.emitNewAccessAndRefreshTokens(refreshToken);
         authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
     }
