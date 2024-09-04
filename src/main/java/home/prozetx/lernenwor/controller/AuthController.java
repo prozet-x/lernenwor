@@ -2,6 +2,7 @@ package home.prozetx.lernenwor.controller;
 
 import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
+import home.prozetx.lernenwor.exception.exceptions.RefreshTokenNotFoundException;
 import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.JwtService;
@@ -37,7 +38,7 @@ public class AuthController {
                     .filter(fieldError -> fieldError.getDefaultMessage() != null)
                     .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage, (existingValue, newValue) -> existingValue));
             result.put("errors", errors);
-            log.info("The attempt failed: " + errors);
+            log.info("The signup attempt failed: " + errors);
             return ResponseEntity.badRequest().body(result);
         }
 
@@ -46,7 +47,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<Map<String, ?>> signIn(@RequestBody SignIn signIn, HttpServletResponse response) {
+    public ResponseEntity<Map<String, ?>> signIn(@RequestBody @Valid SignIn signIn, HttpServletResponse response) {
         Map<String , ?> tokens = authService.emitNewAccessAndRefreshTokens(signIn);
         authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));
@@ -59,18 +60,8 @@ public class AuthController {
     }
 
     @GetMapping("/updateTokens")
-    public ResponseEntity<Map<String, ?>> getNewAccessToken(HttpServletRequest request, HttpServletResponse response) {
-        String refreshToken = Arrays.stream(request.getCookies())
-                .filter(cookie -> cookie.getName().equals("refreshToken"))
-                .findFirst()
-                .map(Cookie::getValue)
-                .orElse(null);
-
-        if (refreshToken == null) {
-            //NEED FIX
-            //Should throw a particular exception
-        }
-
+    public ResponseEntity<Map<String, ?>> updateTokens(HttpServletRequest request, HttpServletResponse response) {
+        String refreshToken = authService.extractRefreshTokenFromRequest(request);
         Map<String, ?> tokens = authService.emitNewAccessAndRefreshTokens(refreshToken);
         authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
         return ResponseEntity.ok().body(Map.of("accessToken", tokens.get("accessToken")));

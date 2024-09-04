@@ -1,7 +1,7 @@
 package home.prozetx.lernenwor.service;
 
 import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
+import home.prozetx.lernenwor.domain.EmailConfirmToken.EmailConfirmToken;
 import home.prozetx.lernenwor.exception.exceptions.EmailTokenNotFoundException;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;

@@ -1,4 +1,4 @@
-package home.prozetx.lernenwor.domain.userConfirmToken;
+package home.prozetx.lernenwor.domain.EmailConfirmToken;
 
 import home.prozetx.lernenwor.domain.user.User;
 import jakarta.persistence.*;

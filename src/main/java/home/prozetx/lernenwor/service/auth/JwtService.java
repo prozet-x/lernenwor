@@ -27,7 +27,6 @@ public class JwtService {
                         .issuedAt(new Date(System.currentTimeMillis()))
                         .expiration(new Date(System.currentTimeMillis() +  + accessTokenLifeTimeSeconds))
                         .subject(user.getUsername())
-                        //.signWith(Keys.hmacShaKeyFor(signKey.getBytes()), Jwts.SIG.HS256)
                         .signWith(Keys.hmacShaKeyFor(signKey.getBytes()))
                         .compact();
         return new AccessToken(token);

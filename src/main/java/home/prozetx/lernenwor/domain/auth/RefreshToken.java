@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class RefreshToken {
-    private String refreshToken;
+    private String token;
 }

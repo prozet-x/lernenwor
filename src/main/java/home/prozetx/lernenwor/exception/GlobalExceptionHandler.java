@@ -1,17 +1,13 @@
 package home.prozetx.lernenwor.exception;
 
-import home.prozetx.lernenwor.exception.exceptions.EmailTokenNotFoundException;
-import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
-import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
-import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
+import home.prozetx.lernenwor.exception.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.Map;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.*;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -33,5 +29,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     ResponseEntity<Map<String, Object>> handle(UserNotFoundException ex) {
         return ResponseEntity.status(BAD_REQUEST).body(Map.of("error", ex.getMessage()));
+    }
+
+    @ExceptionHandler(RefreshTokenNotFoundException.class)
+    ResponseEntity<Map<String, Object>> handle(RefreshTokenNotFoundException ex) {
+        return ResponseEntity.status(UNAUTHORIZED).body(Map.of("error", ex.getMessage()));
+    }
+
+    @ExceptionHandler(RefreshTokenExpiredException.class)
+    ResponseEntity<Map<String, Object>> handle(RefreshTokenExpiredException ex) {
+        return ResponseEntity.status(UNAUTHORIZED).body(Map.of("error", ex.getMessage()));
     }
 }

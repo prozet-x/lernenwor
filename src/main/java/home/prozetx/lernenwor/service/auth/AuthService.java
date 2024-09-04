@@ -5,19 +5,20 @@ import home.prozetx.lernenwor.domain.auth.SignIn;
 import home.prozetx.lernenwor.domain.auth.SignUp;
 import home.prozetx.lernenwor.domain.user.Role;
 import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
-import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
-import home.prozetx.lernenwor.exception.exceptions.UserNotFoundException;
+import home.prozetx.lernenwor.exception.exceptions.*;
 import home.prozetx.lernenwor.repository.UserRepository;
 import home.prozetx.lernenwor.service.UserService;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public class AuthService {
         User user = getUserBySignIn(signIn);
         Map<String, String> tokens = new HashMap<>();
         tokens.put("accessToken", jwtService.generateAccessToken(user).getToken());
-        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getRefreshToken());
+        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getToken());
         return tokens;
     }
 
@@ -62,21 +63,19 @@ public class AuthService {
         userService.saveUser(user);
     }
 
-    public void signOut(HttpServletResponse response) {
-
-    }
-
     public Map<String, String> emitNewAccessAndRefreshTokens(String refreshToken) {
-        Claims claims = jwtService.extractAllClaims(refreshToken);
-        if (jwtService.isTokenExpired(claims)) {
-            //NEED FIX
-            //Should throw a particular exception
+        Claims claims;
+        try {
+            claims = jwtService.extractAllClaims(refreshToken);
+        } catch (ExpiredJwtException ex) {
+            throw new RefreshTokenExpiredException();
         }
+
         String username = jwtService.getUsername(claims);
         User user = userService.getUserByName(username);
         Map<String, String> tokens = new HashMap<>();
         tokens.put("accessToken", jwtService.generateAccessToken(user).getToken());
-        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getRefreshToken());
+        tokens.put("refreshToken", jwtService.generateRefreshToken(user).getToken());
         return tokens;
     }
 
@@ -90,7 +89,7 @@ public class AuthService {
 
     public void setExpiredRefreshTokenToResponse(HttpServletResponse response) {
         RefreshToken refreshToken = jwtService.generateExpiredEmptyRefreshToken();
-        Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken.getRefreshToken());
+        Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken.getToken());
         refreshTokenCookie.setHttpOnly(true);
         refreshTokenCookie.setPath("/api/");
         refreshTokenCookie.setMaxAge(0);
@@ -102,5 +101,18 @@ public class AuthService {
         refreshTokenCookie.setHttpOnly(true);
         refreshTokenCookie.setPath("/api/");
         response.addCookie(refreshTokenCookie);
+    }
+
+    public String extractRefreshTokenFromRequest(HttpServletRequest request) {
+        String refreshToken = Arrays.stream(request.getCookies())
+                .filter(cookie -> cookie.getName().equals("refreshToken"))
+                .findFirst()
+                .map(Cookie::getValue)
+                .orElse(null);
+
+        if (refreshToken == null) {
+            throw new RefreshTokenNotFoundException();
+        }
+        return refreshToken;
     }
 }

@@ -1,18 +1,12 @@
 package home.prozetx.lernenwor.service;
 
-import home.prozetx.lernenwor.domain.auth.SignUp;
-import home.prozetx.lernenwor.domain.user.Role;
 import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.domain.userConfirmToken.EmailConfirmToken;
-import home.prozetx.lernenwor.exception.exceptions.UserEmailExistsException;
-import home.prozetx.lernenwor.exception.exceptions.UserNameExistsException;
+import home.prozetx.lernenwor.domain.EmailConfirmToken.EmailConfirmToken;
 import home.prozetx.lernenwor.repository.EmailConfirmTokenRepository;
 import home.prozetx.lernenwor.repository.UserRepository;
-import home.prozetx.lernenwor.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

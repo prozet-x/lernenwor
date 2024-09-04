@@ -4,6 +4,7 @@ import home.prozetx.lernenwor.domain.user.User;
 import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,10 +35,16 @@ public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
         }
 
         String token = authHeader.substring(AUTH_HEADER_PREFIX.length());
-        Claims claims = jwtService.extractAllClaims(token);
-        if (!jwtService.isTokenExpired(claims)) {
-            filterUtils.authenticateUser(claims);
+        Claims claims;
+        try {
+            claims = jwtService.extractAllClaims(token);
+        } catch (ExpiredJwtException ex) {
+            if (!jwtService.isTokenExpired(claims)) {
+                filterUtils.authenticateUser(claims);
+            }
         }
+
+
 
         filterChain.doFilter(request, response);
     }
