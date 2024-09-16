@@ -1,6 +1,7 @@
 package home.prozetx.lernenwor.config;
 
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
@@ -23,7 +24,7 @@ import java.util.Arrays;
 @AllArgsConstructor
 public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
     private JwtService jwtService;
-    private FilterUtils filterUtils;
+    private AuthService authService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (!request.getRequestURI().equals("/api/v1/auth/updateTokens")) {
@@ -37,12 +38,7 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        Cookie[] cookies = request.getCookies();
-        String refreshToken = Arrays.stream(cookies)
-                .filter(cookie -> cookie.getName().equals("refreshToken"))
-                .findFirst()
-                .map(Cookie::getValue)
-                .orElse(null);
+        String refreshToken = authService.extractRefreshTokenFromRequest(request);
 
         if (refreshToken == null) {
             filterChain.doFilter(request, response);
@@ -51,7 +47,7 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
 
         Claims claims = jwtService.extractAllClaims(refreshToken);
         if (!jwtService.isTokenExpired(claims)) {
-            filterUtils.authenticateUser(claims);
+            authService.authenticateUser(claims);
         }
 
         filterChain.doFilter(request, response);

@@ -15,6 +15,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -114,5 +117,14 @@ public class AuthService {
             throw new RefreshTokenNotFoundException();
         }
         return refreshToken;
+    }
+
+    public void authenticateUser(Claims claims) {
+        String username = jwtService.getUsername(claims);
+        User user = userService.getUserByName(username);
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
+        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+        securityContext.setAuthentication(authToken);
+        SecurityContextHolder.setContext(securityContext);
     }
 }
