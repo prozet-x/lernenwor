@@ -54,9 +54,12 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
             return;
         }
 
+        System.out.println("Refresh. Try to extract claims");
         Claims claims = jwtService.extractAllClaims(refreshToken);
+        System.out.println("Refresh. Claims extracted");
         if (jwtService.isTokenNotExpired(claims)) {
             filterService.authenticateUser(claims);
+            System.out.println("Refresh. Authenticated.");
         }
 
         filterChain.doFilter(request, response);

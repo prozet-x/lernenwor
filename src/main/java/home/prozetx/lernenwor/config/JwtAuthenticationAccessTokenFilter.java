@@ -40,13 +40,18 @@ public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
 
         String accessToken = authHeader.substring(AUTH_HEADER_PREFIX.length());
         try {
+            System.out.println("Access. Try to extract claims");
             Claims claims = jwtService.extractAllClaims(accessToken);
+            System.out.println("Access. Claims extracted");
             if (jwtService.isTokenNotExpired(claims)) {
                 filterService.authenticateUser(claims);
+                System.out.println("Access. Authenticated");
             } else {
+                System.out.println("Access. Token expired without exception. Will throw it manually");
                 throw new ExpiredJwtException(null, claims,"Access token expired");
             }
         } catch (ExpiredJwtException ex) {
+            System.out.println("Access. Token expired with exception. Throw own exception");
             throw new AccessTokenExpiredException();
 //            String refreshToken = authService.extractRefreshTokenFromRequest(request);
 //            try {
