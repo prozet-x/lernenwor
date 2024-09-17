@@ -1,7 +1,9 @@
 package home.prozetx.lernenwor.config;
 
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.exception.exceptions.RefreshTokenNotFoundException;
 import home.prozetx.lernenwor.service.auth.AuthService;
+import home.prozetx.lernenwor.service.auth.FilterService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
@@ -24,7 +26,8 @@ import java.util.Arrays;
 @AllArgsConstructor
 public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
     private JwtService jwtService;
-    private AuthService authService;
+    private FilterService filterService;
+    //private AuthService authService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (!request.getRequestURI().equals("/api/v1/auth/updateTokens")) {
@@ -38,7 +41,13 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
             return;
         }
 
-        String refreshToken = authService.extractRefreshTokenFromRequest(request);
+//        String refreshToken = authService.extractRefreshTokenFromRequest(request);
+
+        String refreshToken = Arrays.stream(request.getCookies())
+                .filter(cookie -> cookie.getName().equals("refreshToken"))
+                .findFirst()
+                .map(Cookie::getValue)
+                .orElse(null);
 
         if (refreshToken == null) {
             filterChain.doFilter(request, response);
@@ -46,8 +55,8 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
         }
 
         Claims claims = jwtService.extractAllClaims(refreshToken);
-        if (!jwtService.isTokenExpired(claims)) {
-            authService.authenticateUser(claims);
+        if (jwtService.isTokenNotExpired(claims)) {
+            filterService.authenticateUser(claims);
         }
 
         filterChain.doFilter(request, response);

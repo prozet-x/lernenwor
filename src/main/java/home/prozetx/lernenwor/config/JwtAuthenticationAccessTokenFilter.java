@@ -1,9 +1,11 @@
 package home.prozetx.lernenwor.config;
 
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.exception.exceptions.AccessTokenExpiredException;
 import home.prozetx.lernenwor.exception.exceptions.RefreshTokenExpiredException;
 import home.prozetx.lernenwor.service.UserService;
 import home.prozetx.lernenwor.service.auth.AuthService;
+import home.prozetx.lernenwor.service.auth.FilterService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -27,7 +29,7 @@ import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_PREFIX
 @AllArgsConstructor
 public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
     private JwtService jwtService;
-    private AuthService authService;
+    private FilterService filterService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader(AUTH_HEADER_NAME);
@@ -39,25 +41,26 @@ public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
         String accessToken = authHeader.substring(AUTH_HEADER_PREFIX.length());
         try {
             Claims claims = jwtService.extractAllClaims(accessToken);
-            if (!jwtService.isTokenExpired(claims)) {
-                authService.authenticateUser(claims);
+            if (jwtService.isTokenNotExpired(claims)) {
+                filterService.authenticateUser(claims);
             } else {
                 throw new ExpiredJwtException(null, claims,"Access token expired");
             }
         } catch (ExpiredJwtException ex) {
-            String refreshToken = authService.extractRefreshTokenFromRequest(request);
-            try {
-                Claims claims = jwtService.extractAllClaims(refreshToken);
-                if (!jwtService.isTokenExpired(claims)) {
-                    Map<String, ?> tokens = authService.emitNewAccessAndRefreshTokens(refreshToken);
-                    authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
-                    response.setHeader(AUTH_HEADER_NAME, AUTH_HEADER_PREFIX + tokens.get("accessToken"));
-                } else {
-                    throw new ExpiredJwtException(null, claims,"Refresh token expired");
-                }
-            } catch (ExpiredJwtException e) {
-                throw new RefreshTokenExpiredException();
-            }
+            throw new AccessTokenExpiredException();
+//            String refreshToken = authService.extractRefreshTokenFromRequest(request);
+//            try {
+//                Claims claims = jwtService.extractAllClaims(refreshToken);
+//                if (!jwtService.isTokenExpired(claims)) {
+//                    Map<String, ?> tokens = authService.emitNewAccessAndRefreshTokens(refreshToken);
+//                    authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
+//                    response.setHeader(AUTH_HEADER_NAME, AUTH_HEADER_PREFIX + tokens.get("accessToken"));
+//                } else {
+//                    throw new ExpiredJwtException(null, claims,"Refresh token expired");
+//                }
+//            } catch (ExpiredJwtException e) {
+//                throw new RefreshTokenExpiredException();
+//            }
         }
 
         filterChain.doFilter(request, response);

@@ -5,12 +5,10 @@ EXPOSE 3000
 WORKDIR /app
 
 COPY ./package.json .
-COPY ./package-lock.json .
+#COPY ./package-lock.json .
 COPY ./src/ ./src
 COPY ./public/ ./public
 
 RUN npm install --silent
-RUN npm install react-router-dom --silent
-RUN npm install jwt-decode --silent
 
 CMD ["npm", "start"]

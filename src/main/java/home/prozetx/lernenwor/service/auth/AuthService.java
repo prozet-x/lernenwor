@@ -119,12 +119,12 @@ public class AuthService {
         return refreshToken;
     }
 
-    public void authenticateUser(Claims claims) {
-        String username = jwtService.getUsername(claims);
-        User user = userService.getUserByName(username);
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
-        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
-        securityContext.setAuthentication(authToken);
-        SecurityContextHolder.setContext(securityContext);
-    }
+//    public void authenticateUser(Claims claims) {
+//        String username = jwtService.getUsername(claims);
+//        User user = userService.getUserByName(username);
+//        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
+//        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+//        securityContext.setAuthentication(authToken);
+//        SecurityContextHolder.setContext(securityContext);
+//    }
 }

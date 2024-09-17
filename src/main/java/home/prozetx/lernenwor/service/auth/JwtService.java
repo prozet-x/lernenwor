@@ -63,7 +63,7 @@ public class JwtService {
         return claims.getSubject();
     }
 
-    public boolean isTokenExpired(Claims claims) {
-        return claims.getExpiration().before(new Date());
+    public boolean isTokenNotExpired(Claims claims) {
+        return !claims.getExpiration().before(new Date());
     }
 }
