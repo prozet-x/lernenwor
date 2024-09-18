@@ -1,11 +1,13 @@
 package home.prozetx.lernenwor.config;
 
 import home.prozetx.lernenwor.domain.user.User;
+import home.prozetx.lernenwor.exception.exceptions.RefreshTokenExpiredException;
 import home.prozetx.lernenwor.exception.exceptions.RefreshTokenNotFoundException;
 import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.FilterService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -55,12 +57,20 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
         }
 
         System.out.println("Refresh. Try to extract claims");
-        Claims claims = jwtService.extractAllClaims(refreshToken);
-        System.out.println("Refresh. Claims extracted");
-        if (jwtService.isTokenNotExpired(claims)) {
+        Claims claims;
+        try {
+            claims = jwtService.extractAllClaims(refreshToken);
+        } catch (ExpiredJwtException ex) {
+//            throw new RefreshTokenExpiredException();
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+//        System.out.println("Refresh. Claims extracted");
+//        if (jwtService.isTokenNotExpired(claims)) {
             filterService.authenticateUser(claims);
             System.out.println("Refresh. Authenticated.");
-        }
+//        }
 
         filterChain.doFilter(request, response);
     }
