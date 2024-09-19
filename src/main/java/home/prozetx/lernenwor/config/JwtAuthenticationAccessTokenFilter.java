@@ -1,10 +1,5 @@
 package home.prozetx.lernenwor.config;
 
-import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.exception.exceptions.AccessTokenExpiredException;
-import home.prozetx.lernenwor.exception.exceptions.RefreshTokenExpiredException;
-import home.prozetx.lernenwor.service.UserService;
-import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.FilterService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
@@ -14,27 +9,45 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
-import java.util.Map;
 
+import static home.prozetx.lernenwor.config.SecurityConfig.AUTH_PATTERN;
+import static home.prozetx.lernenwor.config.SecurityConfig.UPDATE_TOKENS_ENDPOINT;
+import static home.prozetx.lernenwor.config.SecurityConfig.ALL_USERS_ENDPOINT;
+import static home.prozetx.lernenwor.config.SecurityConfig.CHECK_EXISTING_USER_DATA_PATTERN;
 import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_NAME;
 import static home.prozetx.lernenwor.service.auth.AuthService.AUTH_HEADER_PREFIX;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
-    private JwtService jwtService;
-    private FilterService filterService;
+    private final JwtService jwtService;
+    private final FilterService filterService;
+    @Value("${spring.mvc.servlet.path}")
+    private String APIPath;
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        String requestURI = request.getRequestURI();
+
+        String method = request.getMethod();
+        return (requestURI.startsWith(APIPath + AUTH_PATTERN)  && method.equals(HttpMethod.POST.toString()))
+                || (requestURI.equals(APIPath + UPDATE_TOKENS_ENDPOINT) && method.equals(HttpMethod.GET.toString()))
+                || (requestURI.equals(APIPath + ALL_USERS_ENDPOINT) && method.equals(HttpMethod.GET.toString()))
+                || (requestURI.startsWith(APIPath + CHECK_EXISTING_USER_DATA_PATTERN) && method.equals(HttpMethod.GET.toString()));
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader(AUTH_HEADER_NAME);
         if (authHeader == null || !authHeader.startsWith(AUTH_HEADER_PREFIX)) {
-            filterChain.doFilter(request, response);
+            System.out.println("Access. No header");
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authorization header is missing or invalid");
             return;
         }
 
@@ -43,29 +56,12 @@ public class JwtAuthenticationAccessTokenFilter extends OncePerRequestFilter {
             System.out.println("Access. Try to extract claims");
             Claims claims = jwtService.extractAllClaims(accessToken);
             System.out.println("Access. Claims extracted");
-            if (jwtService.isTokenNotExpired(claims)) {
-                filterService.authenticateUser(claims);
-                System.out.println("Access. Authenticated");
-            } else {
-                System.out.println("Access. Token expired without exception. Will throw it manually");
-                throw new ExpiredJwtException(null, claims,"Access token expired");
-            }
+            filterService.authenticateUser(claims);
+            System.out.println("Access. Authenticated");
         } catch (ExpiredJwtException ex) {
-            System.out.println("Access. Token expired with exception. Throw own exception");
-            throw new AccessTokenExpiredException();
-//            String refreshToken = authService.extractRefreshTokenFromRequest(request);
-//            try {
-//                Claims claims = jwtService.extractAllClaims(refreshToken);
-//                if (!jwtService.isTokenExpired(claims)) {
-//                    Map<String, ?> tokens = authService.emitNewAccessAndRefreshTokens(refreshToken);
-//                    authService.addRefreshTokenToResponseAsCookie(response, tokens.get("refreshToken").toString());
-//                    response.setHeader(AUTH_HEADER_NAME, AUTH_HEADER_PREFIX + tokens.get("accessToken"));
-//                } else {
-//                    throw new ExpiredJwtException(null, claims,"Refresh token expired");
-//                }
-//            } catch (ExpiredJwtException e) {
-//                throw new RefreshTokenExpiredException();
-//            }
+            System.out.println("Access. Token expired with exception.");
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access token has expired");
+            return;
         }
 
         filterChain.doFilter(request, response);

@@ -40,9 +40,9 @@ public class GlobalExceptionHandler {
     ResponseEntity<Map<String, Object>> handle(RefreshTokenExpiredException ex) {
         return ResponseEntity.status(UNAUTHORIZED).body(Map.of("error", ex.getMessage()));
     }
-
-    @ExceptionHandler(AccessTokenExpiredException.class)
-    ResponseEntity<Map<String, Object>> handle(AccessTokenExpiredException ex) {
-        return ResponseEntity.status(UNAUTHORIZED).body(Map.of("error", ex.getMessage()));
-    }
+//
+//    @ExceptionHandler(AccessTokenExpiredException.class)
+//    ResponseEntity<Map<String, Object>> handle(AccessTokenExpiredException ex) {
+//        return ResponseEntity.status(UNAUTHORIZED).body(Map.of("error", ex.getMessage()));
+//    }
 }

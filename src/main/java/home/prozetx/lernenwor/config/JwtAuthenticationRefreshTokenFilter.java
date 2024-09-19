@@ -1,9 +1,5 @@
 package home.prozetx.lernenwor.config;
 
-import home.prozetx.lernenwor.domain.user.User;
-import home.prozetx.lernenwor.exception.exceptions.RefreshTokenExpiredException;
-import home.prozetx.lernenwor.exception.exceptions.RefreshTokenNotFoundException;
-import home.prozetx.lernenwor.service.auth.AuthService;
 import home.prozetx.lernenwor.service.auth.FilterService;
 import home.prozetx.lernenwor.service.auth.JwtService;
 import io.jsonwebtoken.Claims;
@@ -14,25 +10,28 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
 import java.util.Arrays;
+import static home.prozetx.lernenwor.config.SecurityConfig.UPDATE_TOKENS_ENDPOINT;
 
 @Component
 @AllArgsConstructor
 public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
     private JwtService jwtService;
     private FilterService filterService;
-    //private AuthService authService;
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        return !request.getRequestURI().equals(UPDATE_TOKENS_ENDPOINT);
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (!request.getRequestURI().equals("/api/v1/auth/updateTokens")) {
+        if (!request.getRequestURI().equals(UPDATE_TOKENS_ENDPOINT)) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -42,8 +41,6 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-
-//        String refreshToken = authService.extractRefreshTokenFromRequest(request);
 
         String refreshToken = Arrays.stream(request.getCookies())
                 .filter(cookie -> cookie.getName().equals("refreshToken"))
@@ -60,17 +57,11 @@ public class JwtAuthenticationRefreshTokenFilter extends OncePerRequestFilter {
         Claims claims;
         try {
             claims = jwtService.extractAllClaims(refreshToken);
-        } catch (ExpiredJwtException ex) {
-//            throw new RefreshTokenExpiredException();
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-//        System.out.println("Refresh. Claims extracted");
-//        if (jwtService.isTokenNotExpired(claims)) {
             filterService.authenticateUser(claims);
             System.out.println("Refresh. Authenticated.");
-//        }
+        } catch (ExpiredJwtException ex) {
+            System.out.println("Refresh. Token expired.");
+        }
 
         filterChain.doFilter(request, response);
     }

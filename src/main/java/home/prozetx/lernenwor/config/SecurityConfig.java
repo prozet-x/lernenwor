@@ -24,6 +24,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     private final JwtAuthenticationAccessTokenFilter jwtAuthenticationAccessTokenFilter;
     private final JwtAuthenticationRefreshTokenFilter jwtAuthenticationRefreshTokenFilter;
+    public static final String AUTH_PATTERN = "/v1/auth/";
+    public static final String UPDATE_TOKENS_ENDPOINT = "/api/v1/auth/updateTokens";
+    public static final String ALL_USERS_ENDPOINT = "/v1/users";
+    public static final String CHECK_EXISTING_USER_DATA_PATTERN = "/v1/users/checks/";
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -31,8 +35,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
                         //.anyRequest().permitAll() //authenticated()
-                        .requestMatchers(HttpMethod.POST, "/v1/auth/**").anonymous()
-                        .requestMatchers(HttpMethod.GET, "/v1/users", "/v1/users/checks/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, AUTH_PATTERN + "**").permitAll()
+                        .requestMatchers(HttpMethod.GET, UPDATE_TOKENS_ENDPOINT).permitAll()
+                        .requestMatchers(HttpMethod.GET, ALL_USERS_ENDPOINT, CHECK_EXISTING_USER_DATA_PATTERN + "**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
