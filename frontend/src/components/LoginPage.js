@@ -1,35 +1,38 @@
-import React, { useState } from 'react';
+// components/LoginPage.js
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 const LoginPage = () => {
     const [name, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+    const { setAccessToken } = useContext(AuthContext);
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/v1/auth/signin', { name, password });
+            const response = await axios.post('/api/v1/auth/signin', { name, password }, { withCredentials: true });
             const { accessToken } = response.data;
 
-            localStorage.setItem('accessToken', accessToken);
-            //localStorage.setItem('refreshToken', refreshToken);
+            // Устанавливаем accessToken в состояние
+            setAccessToken(accessToken);
 
-            // Redirect to the main page with success message
+            // Перенаправление на главную страницу с сообщением об успешном входе
             navigate('/', { state: { fromLogin: true } });
         } catch (error) {
-            setErrorMessage('Incorrect username or password');
+            setErrorMessage('Неверное имя пользователя или пароль');
         }
     };
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Вход</h1>
             <form onSubmit={handleLogin}>
                 <div>
-                    <label>Username:</label>
+                    <label>Имя пользователя:</label>
                     <input
                         type="text"
                         value={name}
@@ -38,7 +41,7 @@ const LoginPage = () => {
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
+                    <label>Пароль:</label>
                     <input
                         type="password"
                         value={password}
@@ -47,7 +50,7 @@ const LoginPage = () => {
                     />
                 </div>
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-                <button type="submit">Login</button>
+                <button type="submit">Войти</button>
             </form>
         </div>
     );

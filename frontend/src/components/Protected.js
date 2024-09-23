@@ -1,42 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import useAuth from '../hooks/useAuth';
+// components/Protected.js
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
-const ProtectedResource = () => {
-    const { axiosInstance, loading, error: authError, isRefreshingTokens } = useAuth(); // Добавили isRefreshingTokens
-    const [response, setResponse] = useState('');
+const Protected = () => {
+    const { axiosInstance, loading, error: authError } = useContext(AuthContext);
+    const [responseData, setResponseData] = useState('');
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchResource = async () => {
+        const fetchProtectedData = async () => {
             try {
-                const res = await axiosInstance.get('/api/v1/users/protected');
-                setResponse(res.data.response);
+                const res = await axiosInstance.get('/users/protected');
+                setResponseData(res.data.response);
             } catch (err) {
-                setError('Произошла ошибка: ' + err.message);
+                if (axios.isCancel(err)) {
+                    console.log('Запрос был отменен:', err.message);
+                } else {
+                    setError('Произошла ошибка: ' + (err.response?.data?.message || err.message));
+                }
             }
         };
 
-        // Выполняем запрос только если не идет загрузка, нет ошибки аутентификации и не идет обновление токенов
-        if (!loading && !authError && !isRefreshingTokens) {
-            fetchResource();
+        if (!loading && !authError) {
+            fetchProtectedData();
         }
-    }, [axiosInstance, loading, authError, isRefreshingTokens]); // Добавили isRefreshingTokens в зависимости
+    }, [axiosInstance, loading, authError]);
 
-    if (loading || isRefreshingTokens) { // Добавили проверку на обновление токенов
-        return <p>Загрузка...</p>;
+    if (loading) {
+        return null; // Или индикатор загрузки
     }
 
     return (
         <div>
+            <h1>Защищенная Страница</h1>
             {authError ? (
                 <p>Ошибка: {authError}</p>
             ) : error ? (
                 <p>Ошибка: {error}</p>
             ) : (
-                <p>{response}</p>
+                <p>{responseData}</p>
             )}
         </div>
     );
 };
 
-export default ProtectedResource;
+export default Protected;

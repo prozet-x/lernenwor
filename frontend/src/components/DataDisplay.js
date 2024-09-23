@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// components/DataDisplay.js
+import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Modal from './Modal'; // Import or define the Modal component if not already done
+import Modal from './Modal'; // Убедитесь, что компонент Modal правильно импортирован
 
 function DataDisplay() {
     const [data, setData] = useState({});
@@ -10,31 +11,45 @@ function DataDisplay() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get('/api/v1/users')
-            .then(response => {
-                console.log(response.data);
-                setData(response.data);
-            })
-            .catch(error => console.error('Ошибка при загрузке данных:', error));
+    // Получаем axiosInstance из AuthContext
+    const { axiosInstance } = useContext(AuthContext);
 
-        // Check for registration or login state
+    useEffect(() => {
+        // Функция для загрузки данных пользователей
+        const fetchUsers = async () => {
+            try {
+                const response = await axiosInstance.get('/users');
+                console.log('Данные пользователей:', response.data);
+                setData(response.data);
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+                setModalMessage("Произошла ошибка при загрузке данных.");
+                setShowModal(true);
+            }
+        };
+
+        fetchUsers();
+
+        // Проверка состояния после регистрации или входа
         if (location.state?.fromRegistration) {
             setModalMessage("Вы успешно создали учетную запись. Теперь Вы можете войти, введя свои учетные данные.");
             setShowModal(true);
+            // Очистка состояния, чтобы избежать повторного отображения сообщения
             navigate(location.pathname, { replace: true, state: {} });
         } else if (location.state?.fromLogin) {
             setModalMessage("Вы успешно вошли в систему. Добро пожаловать!");
             setShowModal(true);
+            // Очистка состояния, чтобы избежать повторного отображения сообщения
             navigate(location.pathname, { replace: true, state: {} });
         }
-    }, [location, navigate]);
+    }, [axiosInstance, location, navigate]);
 
     const handleCloseModal = () => {
         setShowModal(false);
     };
 
-    const renderTable = (key, items) => (
+    // Мемоизированная функция для рендеринга таблицы
+    const renderTable = useCallback((key, items) => (
         <div key={key} className="data-table-container">
             <h2>{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
             <table className="data-table">
@@ -54,7 +69,7 @@ function DataDisplay() {
                 </tbody>
             </table>
         </div>
-    );
+    ), []);
 
     return (
         <div>

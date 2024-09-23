@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+// App.js
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RegistrationForm from './components/RegistrationForm';
 import './App.css';
@@ -7,11 +7,12 @@ import UserDetail from "./components/UserDetail";
 import LoginPage from "./components/LoginPage";
 import Protected from "./components/Protected";
 import Signout from "./components/SignOut";
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
     return (
         <Router>
-            <div>
+            <AuthProvider>
                 <Routes>
                     <Route path="/" element={<DataDisplay />} />
                     <Route path="/protected" element={<Protected />} />
@@ -20,7 +21,7 @@ function App() {
                     <Route path="/signin" element={<LoginPage />} />
                     <Route path="/signout" element={<Signout />} />
                 </Routes>
-            </div>
+            </AuthProvider>
         </Router>
     );
 }
